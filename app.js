@@ -4,14 +4,15 @@ var express                 = require('express'),
     server                  = require("http").createServer(app),
     bodyParser              = require("body-parser"),
     http                    = require('http'),
-    mongoose                = require('mongoose'),
+    mongo                   = require('mongodb'),
+    db = new mongo.Db('mydb', new mongo.Server("127.0.0.1", 27017, {}), {}),
     config                  = require('config'),
     utils                   = require('./lib/utils'),
     request                 = require('request'),
-    mongooseConnection      = utils.connectToDatabase(mongoose, config.db),
     fs                      = require('fs'),
     util                    = require('util'),
     mime                    = require('mime');
+
 
 
 
@@ -27,21 +28,39 @@ app.use(bodyParser.json());
 //     next();
 // });
 
-
-
-// USER MODEL
-require("./models/User")(mongooseConnection);
-
 // SIGNUP WITH DRIBBBLE ACCOUNT
-app.get('/', routes.signUpPage);
+// app.get('/', routes.signUpPage);
 
-app.post('/', routes.postUserName);
+// app.post('/', routes.postUserName);
 
 // EDIT SHIRT
-app.get('/editShirt', routes.editProduct);
+// app.get('/editShirt', routes.editProduct);
 
 // SHOW USER PRODUCTS PAGE
-app.get('/:userId', routes.showUserProductsPage);
+// app.get('/:userId', routes.showUserProductsPage);
+
+app.get('/testkang', function (req, res) {
+   
+    request.get({url: 'https://d13yacurqjgara.cloudfront.net/users/44490/screenshots/1248634/kangaroorunappgameicon.png', encoding: 'binary'}, function (err, response, body) {
+        if (err) return;
+
+        var binaryKangPNG = body;
+        console.log(binaryKangPNG);
+
+        db.open(function(err, db) {
+            db.collection('users', function(err, collection) {
+                doc = {
+                    "kangPNGFile" : binaryKangPNG
+                };
+                collection.insert(doc, function() {
+                    db.close();
+                });
+            });
+        });
+
+    });
+
+});
 
 
 
