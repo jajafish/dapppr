@@ -1,6 +1,7 @@
 exports.getDribbbleDataForUser = function(callback) {
 
-    username = req.body;
+    var username = req.body.dribbbleUserName;
+    console.log("from the dribbble service the username is " +username);
 
     var request  = require('request');
 

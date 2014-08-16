@@ -8,10 +8,6 @@ exports.signUpPage = function (req, res) {
 
 exports.postUserName = function (req, res) {
 
-    // dribbbleAPI.getDribbbleDataForUser(function(err, dData){
-    //     res.header('content-type', 'text/html');
-    // });
-
     var username = req.body.dribbbleUserName;
     console.log("from the dribbble service the username is " +username);
 
@@ -51,6 +47,9 @@ exports.postUserName = function (req, res) {
 
         console.log(dribbbleUser);
         res.header('content-type', 'text/html');
+        res.render('myproducts', {
+            user: dribbbleUser
+        });
 
     });
 

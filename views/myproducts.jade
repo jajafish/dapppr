@@ -1,4 +1,10 @@
 extends layout
 
 block content
-    h2 my store of items
+
+    h1 #{user.userName}
+    h2 #{user.userLikes}
+    img(src="#{user.avatarURL}")
+
+    for png in user.shots
+        img(src="#{png.image_url}")
