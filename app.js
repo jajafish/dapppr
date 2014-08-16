@@ -19,7 +19,8 @@ app.use(function (req, res, next){
     next();
 });
 
-app.get('/', routes.sayHello);
+app.get('/', routes.signUpPage);
+// app.post('/', routes)
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');

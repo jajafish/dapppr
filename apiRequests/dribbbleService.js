@@ -1,4 +1,4 @@
-exports.getDribbbleDataForUser = function(callback) {
+exports.getDribbbleDataForUser = function(err, username, callback) {
 
     var userImagePNGs = [];
 
@@ -35,8 +35,6 @@ exports.getDribbbleDataForUser = function(callback) {
 
         }
 
-
-        console.log(dribbbleUserResponse);
 
         console.log(userImagePNGs);
         console.log(dribbbleUser);
