@@ -59,18 +59,10 @@ var line4;
 
         $(".img-polaroid").click(function(e){
             var el = e.target;
-            /*temp code*/
-            var offset = 50;
-            var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
-            var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
-            var angle = fabric.util.getRandomInt(-20, 40);
-            var width = fabric.util.getRandomInt(30, 50);
-            var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
-
             fabric.Image.fromURL(el.src, function(image) {
                   image.set({
-                    left: left,
-                    top: top,
+                    left: 100,
+                    top: 150,
                     angle: 0,
                     padding: 10,
                     cornersize: 10,
@@ -79,6 +71,7 @@ var line4;
                     hasRotatingPoint:true
                   });
                   //image.scale(getRandomNum(0.1, 0.25)).setCoords();
+                  canvas.clear().renderAll();
                   canvas.add(image);
                 });
         });
