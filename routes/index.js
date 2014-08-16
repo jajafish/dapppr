@@ -55,9 +55,11 @@ exports.postUserName = function (req, res) {
         req.user = dribbbleUser;
 
         res.header('content-type', 'text/html');
-        res.render('myproducts', {
-            user: dribbbleUser,
-            username: username
+        res.render('editProduct', {
+            user: dribbbleUser
+        // res.render('myproducts', {
+        //     user: dribbbleUser,
+        //     username: username
         });
 
 

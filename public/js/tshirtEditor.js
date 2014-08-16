@@ -20,12 +20,13 @@ $(document).ready(function() {
           e.target.opacity = 0.5;
         },
         'object:modified': function(e) {
-          e.target.opacity = 0.7;
+          e.target.opacity = 1;
+          // e.target.globalCompositeOperation = 'darken';
+
         },
        'object:selected':onObjectSelected,
        'selection:cleared':onSelectedCleared
    });
-  // piggyback on `canvas.findTarget`, to fire "object:over" and "object:out" events
   canvas.findTarget = (function(originalFn) {
     return function() {
       var target = originalFn.apply(this, arguments);
@@ -74,7 +75,7 @@ $(document).ready(function() {
             canvas.add(image);
             console.log(JSON.stringify(canvas));
 
-          }, {crossOrigin: 'Anonymous'});
+          });
   });
 
   document.getElementById('remove-selected').onclick = function() {
@@ -101,11 +102,10 @@ $(document).ready(function() {
 
 
   function saveProduct(){
-    // JSON.stringify(canvas);
+    // ultimately we want to save this JSON to the database
     console.log(JSON.stringify(canvas));
   }
 
-    //canvas.add(new fabric.fabric.Object({hasBorders:true,hasControls:false,hasRotatingPoint:false,selectable:false,type:'rect'}));
    $("#drawingArea").hover(
         function() {
              canvas.add(line1);
@@ -135,9 +135,9 @@ $(document).ready(function() {
 });//doc ready
 
 
-function getRandomNum(min, max) {
-  return Math.random() * (max - min) + min;
-}
+// function getRandomNum(min, max) {
+//   return Math.random() * (max - min) + min;
+// }
 
 function onObjectSelected(e) {
   var selectedObject = e.target;
