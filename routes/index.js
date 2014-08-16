@@ -9,7 +9,6 @@ exports.signUpPage = function (req, res) {
 exports.postUserName = function (req, res) {
 
     var username = req.body.dribbbleUserName;
-    console.log("from the dribbble service the username is " +username);
 
     var request  = require('request');
 
@@ -53,13 +52,24 @@ exports.postUserName = function (req, res) {
 
         }
 
-        console.log(dribbbleUser);
+        req.user = dribbbleUser;
+
         res.header('content-type', 'text/html');
-        res.render('editProduct', {
-            user: dribbbleUser
+        res.render('myproducts', {
+            user: dribbbleUser,
+            username: username
         });
+
 
     });
 
 
 };
+
+
+// exports.myProducts = function (req, res) {
+//
+//     res.render('myproducts', {
+//     });
+//
+// };

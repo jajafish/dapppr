@@ -4,7 +4,7 @@ var express                 = require('express'),
     server                  = require("http").createServer(app),
     bodyParser              = require("body-parser"),
     http                    = require('http'),
-    request                 = require('request'),
+    request                 = require('request');
 
 
 
@@ -23,12 +23,14 @@ app.use(bodyParser.json());
 
 // SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);
+
 app.post('/', routes.postUserName);
 
 // EDIT SHIRT
 app.get('/editShirt', function(req, res){
     res.render('editProduct');
 });
+
 
 
 app.set('views', __dirname + '/views');
