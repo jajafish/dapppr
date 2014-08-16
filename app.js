@@ -4,7 +4,11 @@ var express                 = require('express'),
     server                  = require("http").createServer(app),
     bodyParser              = require("body-parser"),
     http                    = require('http'),
-    request                 = require('request');
+    mongoose                = require('mongoose'),
+    config                  = require('config'),
+    utils                   = require('./lib/utils'),
+    request                 = require('request'),
+    mongooseConnection      = utils.connectToDatabase(mongoose, config.db);
 
 
 app.set('port', 3000);
@@ -19,6 +23,10 @@ app.use(bodyParser.json());
 //     next();
 // });
 
+
+
+// USER MODEL
+require("./models/User")(mongooseConnection);
 
 // SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);

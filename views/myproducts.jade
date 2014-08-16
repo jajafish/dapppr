@@ -6,5 +6,5 @@ block content
     h2 #{user.userLikes} people like my work on Dribbble
     img(src="#{user.avatarURL}")
 
-    for png in user.shots
+    for png in user.rawArtwork
         img(src="#{png.image_url}")

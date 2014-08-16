@@ -1,4 +1,5 @@
 var dribbbleAPI = require('../apiRequests/dribbbleService');
+var mongoose = require('mongoose');
 
 exports.signUpPage = function (req, res) {
 
@@ -7,6 +8,8 @@ exports.signUpPage = function (req, res) {
 };
 
 exports.postUserName = function (req, res) {
+
+    var User = mongoose.model('User');
 
     var username = req.body.dribbbleUserName;
     console.log("from the dribbble service the username is " +username);
@@ -30,7 +33,7 @@ exports.postUserName = function (req, res) {
             userLikes: dribbbleUserShots[0].player.likes_received_count,
             portfolioURL: dribbbleUserShots[0].player.url,
             avatarURL: dribbbleUserShots[0].player.avatar_url,
-            shots: []
+            rawArtwork: []
         };
 
 
@@ -48,18 +51,44 @@ exports.postUserName = function (req, res) {
                     likes: dribbbleUserShots[i].likes_count
                 };
 
-                dribbbleUser.shots.push(shotObject);
+                dribbbleUser.rawArtwork.push(shotObject);
             }
 
         }
 
         console.log(dribbbleUser);
-        res.header('content-type', 'text/html');
-        res.render('editProduct', {
-            user: dribbbleUser
+
+        var userInstance = new User();
+
+        userInstance.userName = dribbbleUser.userName;
+        userInstance.userFollowers = dribbbleUser.userFollowers;
+        userInstance.userLikes = dribbbleUser.userLikes;
+        userInstance.portfolioURL = dribbbleUser.portfolioURL;
+        userInstance.avatar_url = dribbbleUser.avatar_url;
+        userInstance.rawArtwork = dribbbleUser.rawArtwork;
+
+        userInstance.save(function(err, data, numberAffected){
+            if (err) {
+                res.render("error", {err: err});
+            }
+            else {
+                var id = data._id;
+                console.log(dribbbleUser);
+                res.header('content-type', 'text/html');
+                res.render('myProducts', {
+                    user: dribbbleUser
+                });
+            }
         });
+
 
     });
 
 
 };
+
+
+
+
+
+

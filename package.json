@@ -23,6 +23,9 @@
     "express" : "4.x",
     "jade" : "*",
     "request" : "*",
-    "body-parser": "*"
+    "body-parser": "*",
+    "mongoose" : "*",
+    "mongodb" : "*",
+    "config" : "*"
   }
 }
