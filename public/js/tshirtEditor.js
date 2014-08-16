@@ -91,6 +91,27 @@ var line4;
       };
 
 
+      document.getElementById('save-product').onclick = function() {
+        saveProduct();
+      };
+
+      function saveProduct(){
+        var dataURL = canvas.toDataURL('image/png');
+        document.getElementById('tcanvas').src = dataURL;
+        $.ajax({
+          type: "POST",
+          url: "script.php",
+          data: {
+            imgBase64: dataURL
+          }
+        }).done(function(o) {
+          window.open(dataURL);
+        });
+
+
+      }
+
+
         //canvas.add(new fabric.fabric.Object({hasBorders:true,hasControls:false,hasRotatingPoint:false,selectable:false,type:'rect'}));
        $("#drawingArea").hover(
             function() {
@@ -114,39 +135,6 @@ var line4;
            document.getElementById("shirtDiv").style.backgroundColor = color;
        });
 
-       $('#flip').click(
-           function() {
-                if ($(this).attr("data-original-title") == "Show Back View") {
-                    $(this).attr('data-original-title', 'Show Front View');
-                    $("#tshirtFacing").attr("src","img/crew_back.png");
-                    a = JSON.stringify(canvas);
-                    canvas.clear();
-                    try
-                    {
-                       var json = JSON.parse(b);
-                       canvas.loadFromJSON(b);
-                    }
-                    catch(e)
-                    {}
-
-                } else {
-                    $(this).attr('data-original-title', 'Show Back View');
-                    $("#tshirtFacing").attr("src","img/crew_front.png");
-                    b = JSON.stringify(canvas);
-                    canvas.clear();
-                    try
-                    {
-                       var json = JSON.parse(a);
-                       canvas.loadFromJSON(a);
-                    }
-                    catch(e)
-                    {}
-                }
-                canvas.renderAll();
-                setTimeout(function() {
-                    canvas.calcOffset();
-                },200);
-        });
        line1 = new fabric.Line([0,0,200,0], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
        line2 = new fabric.Line([199,0,200,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
        line3 = new fabric.Line([0,0,0,400], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
@@ -161,7 +149,7 @@ var line4;
      function onObjectSelected(e) {
         var selectedObject = e.target;
         $("#text-string").val("");
-        selectedObject.hasRotatingPoint = true
+        selectedObject.hasRotatingPoint = true;
         if (selectedObject && selectedObject.type === 'text') {
             //display text editor
             $("#texteditor").css('display', 'block');
@@ -181,17 +169,14 @@ var line4;
          $("#text-string").val("");
          $("#imageeditor").css('display', 'none');
      }
-     function setFont(font){
-          var activeObject = canvas.getActiveObject();
-          if (activeObject && activeObject.type === 'text') {
-            activeObject.fontFamily = font;
-            canvas.renderAll();
-          }
-      }
+
      function removeWhite(){
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'image') {
               activeObject.filters[2] =  new fabric.Image.filters.RemoveWhite({hreshold: 100, distance: 10});//0-255, 0-255
               activeObject.applyFilters(canvas.renderAll.bind(canvas));
           }
+
+
+
      }
