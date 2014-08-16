@@ -37,6 +37,9 @@ app.get('/editShirt', function(req, res){
     res.render('editProduct');
 });
 
+// SHOW USER PRODUCTS PAGE
+app.get('/:userId', routes.showUserProductsPage);
+
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');

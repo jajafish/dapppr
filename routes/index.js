@@ -1,6 +1,7 @@
 var dribbbleAPI = require('../apiRequests/dribbbleService');
 var mongoose = require('mongoose');
 
+
 exports.signUpPage = function (req, res) {
 
     res.render('signup');
@@ -62,13 +63,30 @@ exports.postUserName = function (req, res) {
             else {
                 var id = data._id;
                 res.header('content-type', 'text/html');
-                // res.render('myProducts', {
-                //     user: dribbbleUser
-                // });
+                res.redirect('/' +id);
             }
         });
 
+    });
 
+};
+
+exports.showUserProductsPage = function (req, res) {
+
+    var User = mongoose.model('User');
+    var id = req.params.userId;
+    User.findOne({"_id" : id}, function(err, data){
+        console.log(id);
+
+        res.json(data);
+        // if (err){
+        //     res.send("error man");
+        // } else {
+        //     console.log(data);
+        //     res.render('myproducts', {
+        //         user: data 
+        //     });
+        // }
     });
 
 
