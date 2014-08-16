@@ -10,12 +10,30 @@ exports.signUpPage = function (req, res) {
 
 exports.postUserName = function (req, res) {
 
+    var fs = require('fs');
+
     var User = mongoose.model('User');
 
     var username = req.body.dribbbleUserName;
     console.log("from the dribbble service the username is " +username);
 
     var request  = require('request');
+
+
+    // var options = {
+    //     host: 'https://d13yacurqjgara.cloudfront.net',
+    //     path: '/users/44490/screenshots/1248634/kangaroorunappgameicon.png'
+    // };
+
+    // request.get({url: 'https://d13yacurqjgara.cloudfront.net/users/44490/screenshots/1248634/kangaroorunappgameicon.png', encoding: 'binary'}, function (err, response, body) {
+    //   fs.writeFile("test.png", body, 'binary', function(err) {
+    //     if(err)
+    //       console.log(err);
+    //     else
+    //       console.log("The file was saved!");
+    //   }); 
+    // });
+
 
     request({
         uri: "http://api.dribbble.com/players/"+username+"/shots",
@@ -88,6 +106,5 @@ exports.showUserProductsPage = function (req, res) {
             });
         }
     });
-
 
 };

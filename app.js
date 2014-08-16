@@ -32,44 +32,6 @@ app.use(bodyParser.json());
 require("./models/User")(mongooseConnection);
 
 
-
-// TEST BINARY IMAGE SAVING FUNCTION WITH LOCAL PNG
-app.get('/binary', function(req, res){
-
-    var localPNG = ('./public/img/kangTest.png');
-    var dataUri = base64Image(localPNG);
-    console.log(dataUri);
-
-    function base64Image(src) {
-        var data = fs.readFileSync(src).toString("base64");
-        return util.format("data:%s;base64,%s", mime.lookup(src), data);
-    }
-
-    res.render('imageTest',{binaryImageSource: dataUri});
-
-});
-
-// TEST BINARY IMAGE SAVING WITH REMOTE PNG
-app.get('/binary2', function(req, res){
-
-    var options = {
-        host: 'https://d13yacurqjgara.cloudfront.net',
-        path: '/users/44490/screenshots/1248634/kangaroorunappgameicon.png'
-    };
-
-    request.get({url: 'https://d13yacurqjgara.cloudfront.net/users/44490/screenshots/1248634/kangaroorunappgameicon.png', encoding: 'binary'}, function (err, response, body) {
-      fs.writeFile("test.png", body, 'binary', function(err) {
-        if(err)
-          console.log(err);
-        else
-          console.log("The file was saved!");
-      }); 
-    });
-
-});
-
-
-
 // SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);
