@@ -8,7 +8,10 @@ var express                 = require('express'),
     config                  = require('config'),
     utils                   = require('./lib/utils'),
     request                 = require('request'),
-    mongooseConnection      = utils.connectToDatabase(mongoose, config.db);
+    mongooseConnection      = utils.connectToDatabase(mongoose, config.db),
+    fs                      = require('fs'),
+    util                    = require('util'),
+    mime                    = require('mime');
 
 
 app.set('port', 3000);
@@ -27,6 +30,23 @@ app.use(bodyParser.json());
 
 // USER MODEL
 require("./models/User")(mongooseConnection);
+
+
+
+// TEST BINARY IMAGE SAVING FUNCTION
+app.get('/binary', function(req, res){
+
+    var localPNG = ('./public/img/crew_front.png');
+    var dataUri = base64Image(localPNG);
+    console.log(dataUri);
+
+    function base64Image(src) {
+        var data = fs.readFileSync(src).toString("base64");
+        return util.format("data:%s;base64,%s", mime.lookup(src), data);
+    }
+
+});
+
 
 // SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);

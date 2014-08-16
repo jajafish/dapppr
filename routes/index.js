@@ -10,7 +10,10 @@ exports.signUpPage = function (req, res) {
 
 exports.postUserName = function (req, res) {
 
-    var User = mongoose.model('User');
+    var User = mongoose.model('User'),
+    fs                      = require('fs'),
+    utils                   = require('util'),
+    mime                    = require('mime');
 
     var username = req.body.dribbbleUserName;
     console.log("from the dribbble service the username is " +username);
@@ -78,15 +81,15 @@ exports.showUserProductsPage = function (req, res) {
     User.findOne({"_id" : id}, function(err, data){
         console.log(id);
 
-        res.json(data);
-        // if (err){
-        //     res.send("error man");
-        // } else {
-        //     console.log(data);
-        //     res.render('myproducts', {
-        //         user: data 
-        //     });
-        // }
+        // res.json(data);
+        if (err){
+            res.send("error man");
+        } else {
+            console.log(data);
+            res.render('myproducts', {
+                user: data 
+            });
+        }
     });
 
 
