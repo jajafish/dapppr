@@ -56,7 +56,7 @@ var line4;
           //canvas.renderAll();
         });
 
-        
+
         $(".img-polaroid").click(function(e){
             var el = e.target;
             /*temp code*/
@@ -74,6 +74,8 @@ var line4;
                     angle: 0,
                     padding: 10,
                     cornersize: 10,
+                    scaleX: 200 / image.width,
+                    scaleY: 200 / image.height,
                     hasRotatingPoint:true
                   });
                   //image.scale(getRandomNum(0.1, 0.25)).setCoords();
