@@ -8,10 +8,10 @@ exports.signUpPage = function (req, res) {
 
 exports.takeUserName = function (req, res) {
 
-    dribbbleAPI.getDribbbleDataForUser(function(err, username, dData){
-        res.header('content-type', 'text/html');
-    });
+    // console.log(req.params);
 
-    console.log(req.params.dribbbleUserName);
+    // dribbbleAPI.getDribbbleDataForUser(function(err, dData){
+    //     res.redirect('myproducts');
+    // });
 
 };

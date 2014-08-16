@@ -1,11 +1,11 @@
-exports.getDribbbleDataForUser = function(err, username, callback) {
+exports.getDribbbleDataForUser = function(callback) {
 
     var userImagePNGs = [];
 
     var request  = require('request');
 
     request({
-        uri: "http://api.dribbble.com/players/simplebits/shots",
+        uri: "http://api.dribbble.com/players/KendrickKidd/shots",
         method: "GET",
         timeout: 10000,
         followRedirect: true,
@@ -34,7 +34,6 @@ exports.getDribbbleDataForUser = function(err, username, callback) {
             userImagePNGs.push(shotObject);
 
         }
-
 
         console.log(userImagePNGs);
         console.log(dribbbleUser);

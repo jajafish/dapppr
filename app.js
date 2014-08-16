@@ -14,13 +14,13 @@ app.use(express.static(__dirname + "/public"));
 app.use(bodyParser());
 app.use(bodyParser.json());
 
-app.use(function (req, res, next){
-    console.log(req.body);
-    next();
-});
+// app.use(function (req, res, next){
+//     console.log(req.body);
+//     next();
+// });
 
 app.get('/', routes.signUpPage);
-// app.post('/', routes)
+app.post('/signup', routes.takeUserName);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
