@@ -26,16 +26,7 @@ exports.postUserName = function (req, res) {
 
         var dribbbleUserResponse = JSON.parse(body);
         var dribbbleUserShots = dribbbleUserResponse.shots;
-
-        var dribbbleUser = {
-            userName: dribbbleUserShots[0].player.name,
-            userFollowers: dribbbleUserShots[0].player.followers_count,
-            userLikes: dribbbleUserShots[0].player.likes_received_count,
-            portfolioURL: dribbbleUserShots[0].player.url,
-            avatarURL: dribbbleUserShots[0].player.avatar_url,
-            rawArtwork: []
-        };
-
+        var rawArtwork = [];
 
         var PNGREGEX = /\.(png)\b/;
 
@@ -51,21 +42,18 @@ exports.postUserName = function (req, res) {
                     likes: dribbbleUserShots[i].likes_count
                 };
 
-                dribbbleUser.rawArtwork.push(shotObject);
+                rawArtwork.push(shotObject);
             }
 
         }
 
-        console.log(dribbbleUser);
-
         var userInstance = new User();
-
-        userInstance.userName = dribbbleUser.userName;
-        userInstance.userFollowers = dribbbleUser.userFollowers;
-        userInstance.userLikes = dribbbleUser.userLikes;
-        userInstance.portfolioURL = dribbbleUser.portfolioURL;
-        userInstance.avatar_url = dribbbleUser.avatar_url;
-        userInstance.rawArtwork = dribbbleUser.rawArtwork;
+        userInstance.name = dribbbleUserShots[0].player.name;
+        userInstance.userFollowers = dribbbleUserShots[0].player.followers_count;
+        userInstance.userLikes = dribbbleUserShots[0].player.likes_received_count;
+        userInstance.portfolioURL = dribbbleUserShots[0].player.url;
+        userInstance.avatar_url = dribbbleUserShots[0].player.avatar_url;
+        userInstance.rawArtwork = rawArtwork;
 
         userInstance.save(function(err, data, numberAffected){
             if (err) {
@@ -73,11 +61,10 @@ exports.postUserName = function (req, res) {
             }
             else {
                 var id = data._id;
-                console.log(dribbbleUser);
                 res.header('content-type', 'text/html');
-                res.render('myProducts', {
-                    user: dribbbleUser
-                });
+                // res.render('myProducts', {
+                //     user: dribbbleUser
+                // });
             }
         });
 
@@ -86,9 +73,3 @@ exports.postUserName = function (req, res) {
 
 
 };
-
-
-
-
-
-
