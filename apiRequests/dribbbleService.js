@@ -35,12 +35,6 @@ exports.getDribbbleDataForUser = function(callback) {
 
         }
 
-<<<<<<< HEAD
-=======
-
-        console.log(dribbbleUserResponse);
-
->>>>>>> parent of 1dbed12... logging username on submit
         console.log(userImagePNGs);
         console.log(dribbbleUser);
         callback(null, userImagePNGs);
