@@ -1,7 +1,5 @@
 exports.getDribbbleDataForUser = function(callback) {
 
-    var userImagePNGs = [];
-
     var request  = require('request');
 
     request({
@@ -20,7 +18,8 @@ exports.getDribbbleDataForUser = function(callback) {
             userFollowers: dribbbleUserShots[0].player.followers_count,
             userLikes: dribbbleUserShots[0].player.likes_received_count,
             portfolioURL: dribbbleUserShots[0].player.url,
-            avatarURL: dribbbleUserShots[0].player.avatar_url
+            avatarURL: dribbbleUserShots[0].player.avatar_url,
+            shots: []
         };
 
         for (var i = 0; i < 14; i++) {
@@ -31,13 +30,12 @@ exports.getDribbbleDataForUser = function(callback) {
                 likes: dribbbleUserShots[i].likes_count
             };
 
-            userImagePNGs.push(shotObject);
+            dribbbleUser.shots.push(shotObject);
 
         }
 
-        console.log(userImagePNGs);
         console.log(dribbbleUser);
-        callback(null, userImagePNGs);
+        callback(null, dribbbleUser);
 
     });
 
