@@ -4,7 +4,8 @@ var express                 = require('express'),
     server                  = require("http").createServer(app),
     bodyParser              = require("body-parser"),
     http                    = require('http'),
-    request                 = require('request');
+    request                 = require('request'),
+
 
 
 app.set('port', 3000);
@@ -33,4 +34,3 @@ app.get('/editShirt', function(req, res){
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('view options', {layout: true});
-

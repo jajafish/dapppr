@@ -19,7 +19,7 @@ var line4;
                 e.target.opacity = 0.5;
               },
               'object:modified': function(e) {
-                e.target.opacity = 1;
+                e.target.opacity = 0.7;
               },
              'object:selected':onObjectSelected,
              'selection:cleared':onSelectedCleared
@@ -66,12 +66,12 @@ var line4;
                     padding: 10,
                     cornersize: 10,
                     scaleX: 200 / image.width,
-                    scaleY: 200 / image.height,
+                    scaleY: 150 / image.height,
                     hasRotatingPoint:true
                   });
                   canvas.clear().renderAll();
                   canvas.add(image);
-                });
+                }, {crossOrigin: 'Anonymous'});
         });
 
       document.getElementById('remove-selected').onclick = function() {
@@ -95,20 +95,37 @@ var line4;
         saveProduct();
       };
 
-      function saveProduct(){
-        var dataURL = canvas.toDataURL('image/png');
-        document.getElementById('tcanvas').src = dataURL;
-        $.ajax({
-          type: "POST",
-          url: "script.php",
-          data: {
-            imgBase64: dataURL
-          }
-        }).done(function(o) {
+
+      function saveProduct(url, name){
+        // getBase64();
+
+
+
+
+
+
+        var canvas = document.getElementById('tcanvas');
+        console.log(canvas);
+        var c = canvas.getContext('2d');
+        console.log(c);
+
+        window.open('', document.getElementById('tcanvas').toDataURL());
+        //
+        // var dataURL = canvas.toDataURL('image/png');
+        // document.getElementById('tcanvas').src = dataURL;
+        //
+        //   window.open(window.atob(dataURL));
+      }
+
+
+      function getBase64() {
+          canvas = document.getElementById('tcanvas');
+          canvas.crossOrigin = "Anonymous";
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(canvas, 0, 0);
+          var dataURL = canvas.toDataURL("image/png");
+          alert(dataURL.replace(/^data:image\/(png|jpg);base64,/, ""));
           window.open(dataURL);
-        });
-
-
       }
 
 
