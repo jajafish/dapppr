@@ -48,7 +48,8 @@ exports.postUserName = function (req, res) {
 
         res.header('content-type', 'text/html');
         res.render('myproducts', {
-            user: dribbbleUser
+            user: dribbbleUser,
+            username: username
         });
 
 
@@ -59,9 +60,9 @@ exports.postUserName = function (req, res) {
 };
 
 
-exports.myProducts = function (req, res) {
-
-    res.render('myproducts', {
-    });
-
-};
+// exports.myProducts = function (req, res) {
+//
+//     res.render('myproducts', {
+//     });
+//
+// };

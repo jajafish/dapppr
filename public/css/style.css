@@ -1,3 +1,4 @@
+
 body{
   font-family: 'Helvetica', sans-serif;
 
@@ -33,4 +34,50 @@ body{
 .user_name{
   margin: 10px;
   font-weight: 400;
+}
+
+.prod_img{
+  height: 300px;
+  width: 400px;
+}
+
+.product {
+    max-width:64em;/* 1024px; */
+		margin:0 auto;
+}
+
+[class*='col-'] {
+	float: left;
+	width:33.333333%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+	}
+
+.grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+[class*='col-'] {
+  padding: 1em 1em 0;
+}
+
+
+
+@media screen and (max-width: 50em) {
+  .grid {
+    overflow: hidden;
+  }
+  .grid > div {
+    float: left;
+    width: 100%;
+  }
 }
