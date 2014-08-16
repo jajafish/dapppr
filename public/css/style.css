@@ -1,0 +1,36 @@
+body{
+  font-family: 'Helvetica', sans-serif;
+
+
+}
+
+.dapppr_title{
+  font-family: 'Clicker Script', cursive;
+  font-size: 2.2em;
+  margin: 10px 10px;
+}
+
+.user_profile{
+  width: 100%;
+  position: relative;
+}
+
+.profile_center{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+.user_pic{
+  height: 160px;
+  width: 160px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.user_name{
+  margin: 10px;
+  font-weight: 400;
+}

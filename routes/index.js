@@ -9,3 +9,13 @@ exports.sayHello = function (req, res) {
 
 
 };
+
+
+exports.myProducts = function (req, res) {
+
+    res.render('myproducts');
+
+};
+
+
+

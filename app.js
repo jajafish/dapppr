@@ -21,6 +21,7 @@ app.use(function (req, res, next){
 
 
 app.get('/', routes.sayHello);
+app.get('/username', routes.myProducts);
 
 
 app.set('views', __dirname + '/views');
