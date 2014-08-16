@@ -14,6 +14,7 @@ var express                 = require('express'),
     mime                    = require('mime');
 
 
+
 app.set('port', 3000);
 server.listen(3000);
 
@@ -34,6 +35,7 @@ require("./models/User")(mongooseConnection);
 
 // SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);
+
 app.post('/', routes.postUserName);
 
 // EDIT SHIRT
@@ -45,7 +47,7 @@ app.get('/editShirt', function(req, res){
 app.get('/:userId', routes.showUserProductsPage);
 
 
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.set('view options', {layout: true});
-

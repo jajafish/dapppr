@@ -4,6 +4,7 @@ module.exports = function (mongoose) {
     var UserSchema = new Schema ({
         name: String,
         userID: String,
+        avatar_url: String,
         rawArtwork: [],
         products: []
     });

@@ -17,3 +17,261 @@
     height: 20px;
 }
 
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@font-face {
+  font-family: 'proxima-nova';
+  src: url('../fonts/proximanova-regular-webfont.eot');
+  src: url('../fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-regular-webfont.woff') format('woff'), url('../fonts/proximanova-regular-webfont.ttf') format('truetype'), url('../fonts/proximanova-regular-webfont.svg#proxima-nova') format('svg');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'proxima-nova-light';
+  src: url('../fonts/proximanova-light-webfont.eot');
+  src: url('../fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-light-webfont.woff') format('woff'), url('../fonts/proximanova-light-webfont.ttf') format('truetype'), url('../fonts/proximanova-light-webfont.svg#proxima_nova_rglight') format('svg');
+  font-style: normal;
+  font-weight: 300;
+}
+
+
+body{
+  font-family: "proxima-nova",'Helvetica', sans-serif;
+  background: #f1f1f1;
+  color:#333;
+}
+
+.header{
+  background: rgba(0,0,0,.90);
+  position:fixed;
+  z-index: 1000;
+  width:100%;
+  height: 6px;
+  top:0;
+}
+.dapppr_title{
+  /*padding: .65em;*/
+  margin-top:16px;
+}
+.dapppr_title a{
+  font-family: 'Pacifico', cursive;
+  text-decoration: none;
+  color:rgba(255,255,255,1.0);
+  font-size: 2.2em;
+  padding: .65em;
+  letter-spacing: .03em;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.dapppr_title a:hover{
+  color:rgba(255,255,255,.95);
+}
+
+.wrap-big{
+  max-width:72em;
+  margin:0 auto;
+}
+.wrap{
+  max-width:65em;
+  margin:0 auto;
+}
+.user_profile{
+  width: 100%;
+  position: relative;
+  margin: 2em 0;
+}
+
+.profile_center{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.profile_center_link{
+  display: block;
+  margin: 6px auto;
+  text-align: center;
+}
+
+.profile_center_link a{
+  text-decoration: none;
+  font-size: 1.25em;
+  font-family: 'Pacifico', cursive;
+  letter-spacing: .03em;
+  color:rgba(0,0,0,.86);
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.profile_center_link a:hover{
+  color:rgba(0,0,0,.66);
+}
+.user_pic{
+  height: 142px;
+  width: 142px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+
+.user_name{
+  margin: 10px;
+  font-weight: 400;
+  font-size: 1.75em;
+}
+
+
+.alert{
+      width: 60%;
+      height: auto;
+      text-align: center;
+      color: rgba(255,255,255,.8);
+      background: rgba(0,0,0,.6);
+      margin: 0 auto;
+      padding: 1em;
+      font-size: 1.25em;
+      line-height: 1.25em;
+      font-family: "proxima-nova-light",'Helvetica', sans-serif;
+      letter-spacing: .06em;
+    }
+
+
+.prod_img{
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.product {
+    max-width:64em;/* 1024px; */
+		margin:0 auto;
+}
+
+[class*='col-'] {
+	float: left;
+	width:33.333333%;
+	}
+
+.item-container{
+  margin: 10px;
+  padding: 1em;
+}
+.grid:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.item-container {
+  background: white;
+  padding: 1em;
+}
+
+.footer{
+  background: rgba(0,0,0,.90);
+  width:100%;
+  margin-top:60px;
+}
+
+.dapppr_footer_title{
+  font-family: 'Pacifico', cursive;
+  color:#fff;
+  font-size: 2.2em;
+  padding: .65em;
+  letter-spacing: .03em;
+}
+
+.dapppr_footer_title a{
+  text-decoration: none;
+  font-size: 1.25em;
+  font-family: 'Pacifico', cursive;
+  letter-spacing: .03em;
+  color:rgba(255,255,255,1.0);
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+.dapppr_footer_title a:hover{
+  color:rgba(255,255,255,.86);
+}
+
+span.about{
+  text-decoration: none;
+  font-size: 1em;
+  font-family: "proxima-nova",'Helvetica', sans-serif;
+  color:rgba(255,255,255,1.0);
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -ms-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;}
+
+
+@media screen and (max-width: 50em) {
+  .grid {
+    overflow: hidden;
+  }
+  .grid > div {
+    float: left;
+    width: 100%;
+  }
+}

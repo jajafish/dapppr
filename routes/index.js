@@ -1,7 +1,6 @@
 var dribbbleAPI = require('../apiRequests/dribbbleService');
 var mongoose = require('mongoose');
 
-
 exports.signUpPage = function (req, res) {
 
     res.render('signup');
@@ -9,8 +8,6 @@ exports.signUpPage = function (req, res) {
 };
 
 exports.postUserName = function (req, res) {
-
-    var fs = require('fs');
 
     var User = mongoose.model('User');
 

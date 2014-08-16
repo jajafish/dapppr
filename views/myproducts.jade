@@ -2,9 +2,31 @@ extends layout
 
 block content
 
-    h1 #{user.name}
-    h2 #{user.userLikes} people like my work on Dribbble
-    img(src="#{user.avatarURL}")
 
-    for png in user.rawArtwork
-        img(src="#{png.image_url}")
+  section.header
+
+  div.wrap
+    section.user_profile
+      img.user_pic.profile_center(src='#{user.avatar_url}')
+      h2.user_name.profile_center
+        | #{user.userName}
+      h2.profile_center  #{user.userLikes} Likes
+      h2.profile_center_link
+        a(href='https://dribbble.com/#{username}') dribbble account
+
+
+    div.alert
+      p Enjoy the example of your dribbble store? Click or tap the settings icon to activate your dribble store. You can always edit your store contents later on.
+
+    section.products
+      div.grid
+        for png, index in user.rawArtwork
+          div(class='col-'+index)
+            div.item-container
+              img.prod_img.profile_center(src='#{png.image_url}')
+
+  section.footer
+    div.wrap-big
+      h1.dapppr_footer_title
+        a(href="#") dapppr
+        span.about | about
