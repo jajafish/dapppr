@@ -62,6 +62,29 @@ app.get('/testkang', function (req, res) {
 
 });
 
+app.get('/showAlienImage', function (req, res){
+
+
+    db.open(function(err, db){
+        db.collection.find(), function(err, docs){
+            console.log(docs);
+        };
+
+    });
+
+
+
+    // db.open(function(err, db){
+    //     db.collection('users', function(err, collection){
+    //         collection.find({"_id" : "53efe09a531bd30f23afb430"}, function(err, docs) {
+    //             console.log(docs).toArray();
+    //         });
+    //     });
+    // });
+
+    // // console.log(alienImage);
+
+});
 
 
 app.set('views', __dirname + '/views');
