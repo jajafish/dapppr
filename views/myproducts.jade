@@ -8,3 +8,8 @@ block content
 
     for png in user.shots
         img(src="#{png.image_url}")
+  section.products
+    div.grid
+      for png, index in user.shots
+        div(class='col-'+index)
+          img.prod_img.profile_center(src='#{png.image_url}')

@@ -7,7 +7,7 @@ var line2;
 var line3;
 var line4;
     $(document).ready(function() {
-        //setup front side canvas 
+        //setup front side canvas
 
 
         canvas = new fabric.Canvas('tcanvas', {
@@ -16,10 +16,10 @@ var line4;
           selectionBorderColor:'blue'
         });
         canvas.on({
-             'object:moving': function(e) {         
+             'object:moving': function(e) {
                 e.target.opacity = 0.5;
               },
-              'object:modified': function(e) {          
+              'object:modified': function(e) {
                 e.target.opacity = 1;
               },
              'object:selected':onObjectSelected,
@@ -46,41 +46,17 @@ var line4;
           };
         })(canvas.findTarget);
 
-        canvas.on('object:over', function(e) {      
+        canvas.on('object:over', function(e) {
           //e.target.setFill('red');
           //canvas.renderAll();
         });
-        
-        canvas.on('object:out', function(e) {       
+
+        canvas.on('object:out', function(e) {
           //e.target.setFill('green');
           //canvas.renderAll();
         });
-                     
-        document.getElementById('add-text').onclick = function() {
-            var text = $("#text-string").val();
-            var textSample = new fabric.Text(text, {
-              left: fabric.util.getRandomInt(0, 200),
-              top: fabric.util.getRandomInt(0, 400),
-              fontFamily: 'helvetica',
-              angle: 0,
-              fill: '#000000',
-              scaleX: 0.5,
-              scaleY: 0.5,
-              fontWeight: '',
-              hasRotatingPoint:true
-            });         
-            canvas.add(textSample); 
-            canvas.item(canvas.item.length-1).hasRotatingPoint = true;    
-            $("#texteditor").css('display', 'block');
-            $("#imageeditor").css('display', 'block');
-        };
-        $("#text-string").keyup(function(){         
-            var activeObject = canvas.getActiveObject();
-              if (activeObject && activeObject.type === 'text') {
-                  activeObject.text = this.value;
-                  canvas.renderAll();
-              }
-        });
+
+        
         $(".img-polaroid").click(function(e){
             var el = e.target;
             /*temp code*/
@@ -90,7 +66,7 @@ var line4;
             var angle = fabric.util.getRandomInt(-20, 40);
             var width = fabric.util.getRandomInt(30, 50);
             var opacity = (function(min, max){ return Math.random() * (max - min) + min; })(0.5, 1);
-            
+
             fabric.Image.fromURL(el.src, function(image) {
                   image.set({
                     left: left,
@@ -103,8 +79,8 @@ var line4;
                   //image.scale(getRandomNum(0.1, 0.25)).setCoords();
                   canvas.add(image);
                 });
-        });           
-      document.getElementById('remove-selected').onclick = function() {       
+        });
+      document.getElementById('remove-selected').onclick = function() {
             var activeObject = canvas.getActiveObject(),
                 activeGroup = canvas.getActiveGroup();
             if (activeObject) {
@@ -119,7 +95,7 @@ var line4;
               });
             }
       };
-      document.getElementById('bring-to-front').onclick = function() {        
+      document.getElementById('bring-to-front').onclick = function() {
             var activeObject = canvas.getActiveObject(),
                 activeGroup = canvas.getActiveGroup();
             if (activeObject) {
@@ -133,7 +109,7 @@ var line4;
               });
             }
       };
-      document.getElementById('send-to-back').onclick = function() {          
+      document.getElementById('send-to-back').onclick = function() {
             var activeObject = canvas.getActiveObject(),
                 activeGroup = canvas.getActiveGroup();
             if (activeObject) {
@@ -146,63 +122,63 @@ var line4;
                 object.sendToBack();
               });
             }
-      };          
-      $("#text-bold").click(function() {          
+      };
+      $("#text-bold").click(function() {
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'text') {
-            activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');            
+            activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');
             canvas.renderAll();
           }
         });
-      $("#text-italic").click(function() {       
+      $("#text-italic").click(function() {
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'text') {
-              activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');            
+              activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');
             canvas.renderAll();
           }
         });
-      $("#text-strike").click(function() {        
+      $("#text-strike").click(function() {
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'text') {
               activeObject.textDecoration = (activeObject.textDecoration == 'line-through' ? '' : 'line-through');
             canvas.renderAll();
           }
         });
-      $("#text-underline").click(function() {         
+      $("#text-underline").click(function() {
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'text') {
               activeObject.textDecoration = (activeObject.textDecoration == 'underline' ? '' : 'underline');
             canvas.renderAll();
           }
         });
-      $("#text-left").click(function() {          
+      $("#text-left").click(function() {
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'text') {
               activeObject.textAlign = 'left';
             canvas.renderAll();
           }
         });
-      $("#text-center").click(function() {        
+      $("#text-center").click(function() {
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'text') {
-              activeObject.textAlign = 'center';            
+              activeObject.textAlign = 'center';
             canvas.renderAll();
           }
         });
-      $("#text-right").click(function() {         
+      $("#text-right").click(function() {
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'text') {
-              activeObject.textAlign = 'right';         
+              activeObject.textAlign = 'right';
             canvas.renderAll();
           }
-        });   
+        });
       $("#font-family").change(function() {
           var activeObject = canvas.getActiveObject();
           if (activeObject && activeObject.type === 'text') {
             activeObject.fontFamily = this.value;
             canvas.renderAll();
           }
-        });   
+        });
         $('#text-bgcolor').miniColors({
             change: function(hex, rgb) {
               var activeObject = canvas.getActiveObject();
@@ -217,7 +193,7 @@ var line4;
             close: function(hex, rgb) {
                 //
             }
-        });     
+        });
         $('#text-fontcolor').miniColors({
             change: function(hex, rgb) {
               var activeObject = canvas.getActiveObject();
@@ -233,7 +209,7 @@ var line4;
                 //
             }
         });
-        
+
         $('#text-strokecolor').miniColors({
             change: function(hex, rgb) {
               var activeObject = canvas.getActiveObject();
@@ -249,17 +225,17 @@ var line4;
                 //
             }
         });
-    
+
         //canvas.add(new fabric.fabric.Object({hasBorders:true,hasControls:false,hasRotatingPoint:false,selectable:false,type:'rect'}));
        $("#drawingArea").hover(
-            function() {                
+            function() {
                  canvas.add(line1);
                  canvas.add(line2);
                  canvas.add(line3);
-                 canvas.add(line4); 
+                 canvas.add(line4);
                  canvas.renderAll();
             },
-            function() {                
+            function() {
                  canvas.remove(line1);
                  canvas.remove(line2);
                  canvas.remove(line3);
@@ -267,17 +243,17 @@ var line4;
                  canvas.renderAll();
             }
         );
-       
+
        $('.color-preview').click(function(){
            var color = $(this).css("background-color");
-           document.getElementById("shirtDiv").style.backgroundColor = color;          
+           document.getElementById("shirtDiv").style.backgroundColor = color;
        });
-       
+
        $('#flip').click(
-           function() {            
+           function() {
                 if ($(this).attr("data-original-title") == "Show Back View") {
-                    $(this).attr('data-original-title', 'Show Front View');                                
-                    $("#tshirtFacing").attr("src","img/crew_back.png");                 
+                    $(this).attr('data-original-title', 'Show Front View');
+                    $("#tshirtFacing").attr("src","img/crew_back.png");
                     a = JSON.stringify(canvas);
                     canvas.clear();
                     try
@@ -287,52 +263,52 @@ var line4;
                     }
                     catch(e)
                     {}
-                    
+
                 } else {
-                    $(this).attr('data-original-title', 'Show Back View');                                      
-                    $("#tshirtFacing").attr("src","img/crew_front.png");                    
+                    $(this).attr('data-original-title', 'Show Back View');
+                    $("#tshirtFacing").attr("src","img/crew_front.png");
                     b = JSON.stringify(canvas);
                     canvas.clear();
                     try
                     {
                        var json = JSON.parse(a);
-                       canvas.loadFromJSON(a);                     
+                       canvas.loadFromJSON(a);
                     }
                     catch(e)
                     {}
-                }       
+                }
                 canvas.renderAll();
                 setTimeout(function() {
                     canvas.calcOffset();
-                },200);             
-        });    
+                },200);
+        });
        $(".clearfix button,a").tooltip();
        line1 = new fabric.Line([0,0,200,0], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
        line2 = new fabric.Line([199,0,200,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
        line3 = new fabric.Line([0,0,0,400], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
        line4 = new fabric.Line([0,400,200,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
      });//doc ready
-     
-     
+
+
      function getRandomNum(min, max) {
         return Math.random() * (max - min) + min;
      }
-     
-     function onObjectSelected(e) {  
+
+     function onObjectSelected(e) {
         var selectedObject = e.target;
         $("#text-string").val("");
         selectedObject.hasRotatingPoint = true
         if (selectedObject && selectedObject.type === 'text') {
-            //display text editor           
+            //display text editor
             $("#texteditor").css('display', 'block');
-            $("#text-string").val(selectedObject.getText());            
+            $("#text-string").val(selectedObject.getText());
             $('#text-fontcolor').miniColors('value',selectedObject.fill);
-            $('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);  
+            $('#text-strokecolor').miniColors('value',selectedObject.strokeStyle);
             $("#imageeditor").css('display', 'block');
         }
         else if (selectedObject && selectedObject.type === 'image'){
             //display image editor
-            $("#texteditor").css('display', 'none');    
+            $("#texteditor").css('display', 'none');
             $("#imageeditor").css('display', 'block');
         }
       }
@@ -350,8 +326,8 @@ var line4;
       }
      function removeWhite(){
           var activeObject = canvas.getActiveObject();
-          if (activeObject && activeObject.type === 'image') {            
+          if (activeObject && activeObject.type === 'image') {
               activeObject.filters[2] =  new fabric.Image.filters.RemoveWhite({hreshold: 100, distance: 10});//0-255, 0-255
               activeObject.applyFilters(canvas.renderAll.bind(canvas));
-          }         
+          }
      }
