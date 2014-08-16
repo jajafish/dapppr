@@ -3,7 +3,7 @@ extends layout
 block content
 
     h1 #{user.userName}
-    h2 #{user.userLikes}
+    h2 #{user.userLikes} people like my work on Dribbble
     img(src="#{user.avatarURL}")
 
     for png in user.shots

@@ -20,8 +20,15 @@ app.use(bodyParser.json());
 // });
 
 
+// SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);
+
+// EDIT SHIRT
+app.get('/editShirt', function(req, res){
+    res.render('editProduct');
+});
+
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
