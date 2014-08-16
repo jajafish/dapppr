@@ -45,6 +45,8 @@ app.get('/binary', function(req, res){
         return util.format("data:%s;base64,%s", mime.lookup(src), data);
     }
 
+    res.render('imageTest',{binaryImageSource: dataUri});
+
 });
 
 

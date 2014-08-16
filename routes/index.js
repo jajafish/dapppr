@@ -10,10 +10,7 @@ exports.signUpPage = function (req, res) {
 
 exports.postUserName = function (req, res) {
 
-    var User = mongoose.model('User'),
-    fs                      = require('fs'),
-    utils                   = require('util'),
-    mime                    = require('mime');
+    var User = mongoose.model('User');
 
     var username = req.body.dribbbleUserName;
     console.log("from the dribbble service the username is " +username);
