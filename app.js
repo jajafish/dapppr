@@ -19,8 +19,12 @@ app.use(bodyParser.json());
 //     next();
 // });
 
+<<<<<<< HEAD
 app.get('/', routes.signUpPage);
 app.post('/signup', routes.takeUserName);
+=======
+app.get('/', routes.sayHello);
+>>>>>>> parent of 1dbed12... logging username on submit
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
