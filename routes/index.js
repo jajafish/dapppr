@@ -33,15 +33,23 @@ exports.postUserName = function (req, res) {
             shots: []
         };
 
+
+        var PNGREGEX = /\.(png)\b/;
+
         for (var i = 0; i < 14; i++) {
 
-            var shotObject = {
-                imageName: dribbbleUserShots[i].title,
-                image_url: dribbbleUserShots[i].image_url,
-                likes: dribbbleUserShots[i].likes_count
-            };
+            var currentImageUrl = dribbbleUserShots[i].image_url;
 
-            dribbbleUser.shots.push(shotObject);
+            if (PNGREGEX.exec(currentImageUrl)) {
+
+                var shotObject = {
+                    imageName: dribbbleUserShots[i].title,
+                    image_url: dribbbleUserShots[i].image_url,
+                    likes: dribbbleUserShots[i].likes_count
+                };
+
+                dribbbleUser.shots.push(shotObject);
+            }
 
         }
 
