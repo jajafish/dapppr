@@ -2,17 +2,31 @@ extends layout
 
 block content
 
-  section.user_profile
-    img.user_pic.profile_center(src='#{user.avatarURL}')
-    h2.user_name.profile_center
-      | #{user.userName}
-    h2.profile_center #{user.userLikes}
-    h2.profile_center
-      a(href='https://dribbble.com/#{username}') Dribbble
+
+  section.header
+
+  div.wrap
+    section.user_profile
+      img.user_pic.profile_center(src='#{user.avatarURL}')
+      h2.user_name.profile_center
+        | #{user.userName}
+      h2.profile_center  #{user.userLikes} Likes
+      h2.profile_center_link
+        a(href='https://dribbble.com/#{username}') dribbble account
 
 
-  section.products
-    div.grid
-      for png, index in user.shots
-        div(class='col-'+index)
-          img.prod_img.profile_center(src='#{png.image_url}')
+    div.alert
+      p Enjoy the example of your dribbble store? Click or tap the settings icon to activate your dribble store. You can always edit your store contents later on.
+
+    section.products
+      div.grid
+        for png, index in user.shots
+          div(class='col-'+index)
+            div.item-container
+              img.prod_img.profile_center(src='#{png.image_url}')
+
+  section.footer
+    div.wrap-big
+      h1.dapppr_footer_title
+        a(href="#") dapppr
+        span.about | about

@@ -7,6 +7,7 @@ var express                 = require('express'),
     request                 = require('request');
 
 
+
 app.set('port', 3000);
 server.listen(3000);
 
@@ -20,13 +21,15 @@ app.use(bodyParser.json());
 // });
 
 
+// SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);
 
 app.post('/', routes.postUserName);
 
-
-// app.get('/:username', routes.myProducts);
-
+// EDIT SHIRT
+app.get('/editShirt', function(req, res){
+    res.render('editProduct');
+});
 
 
 
