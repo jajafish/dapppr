@@ -9,7 +9,6 @@ var line4;
     $(document).ready(function() {
         //setup front side canvas
 
-
         canvas = new fabric.Canvas('tcanvas', {
           hoverCursor: 'pointer',
           selection: true,
@@ -90,136 +89,7 @@ var line4;
               });
             }
       };
-      // document.getElementById('bring-to-front').onclick = function() {
-      //       var activeObject = canvas.getActiveObject(),
-      //           activeGroup = canvas.getActiveGroup();
-      //       if (activeObject) {
-      //         activeObject.bringToFront();
-      //       }
-      //       else if (activeGroup) {
-      //         var objectsInGroup = activeGroup.getObjects();
-      //         canvas.discardActiveGroup();
-      //         objectsInGroup.forEach(function(object) {
-      //           object.bringToFront();
-      //         });
-      //       }
-      // };
-      // document.getElementById('send-to-back').onclick = function() {
-      //       var activeObject = canvas.getActiveObject(),
-      //           activeGroup = canvas.getActiveGroup();
-      //       if (activeObject) {
-      //         activeObject.sendToBack();
-      //       }
-      //       else if (activeGroup) {
-      //         var objectsInGroup = activeGroup.getObjects();
-      //         canvas.discardActiveGroup();
-      //         objectsInGroup.forEach(function(object) {
-      //           object.sendToBack();
-      //         });
-      //       }
-      // };
-      // $("#text-bold").click(function() {
-      //     var activeObject = canvas.getActiveObject();
-      //     if (activeObject && activeObject.type === 'text') {
-      //       activeObject.fontWeight = (activeObject.fontWeight == 'bold' ? '' : 'bold');
-      //       canvas.renderAll();
-      //     }
-      //   });
-      // $("#text-italic").click(function() {
-      //     var activeObject = canvas.getActiveObject();
-      //     if (activeObject && activeObject.type === 'text') {
-      //         activeObject.fontStyle = (activeObject.fontStyle == 'italic' ? '' : 'italic');
-      //       canvas.renderAll();
-      //     }
-      //   });
-      // $("#text-strike").click(function() {
-      //     var activeObject = canvas.getActiveObject();
-      //     if (activeObject && activeObject.type === 'text') {
-      //         activeObject.textDecoration = (activeObject.textDecoration == 'line-through' ? '' : 'line-through');
-      //       canvas.renderAll();
-      //     }
-      //   });
-      // $("#text-underline").click(function() {
-      //     var activeObject = canvas.getActiveObject();
-      //     if (activeObject && activeObject.type === 'text') {
-      //         activeObject.textDecoration = (activeObject.textDecoration == 'underline' ? '' : 'underline');
-      //       canvas.renderAll();
-      //     }
-      //   });
-      // $("#text-left").click(function() {
-      //     var activeObject = canvas.getActiveObject();
-      //     if (activeObject && activeObject.type === 'text') {
-      //         activeObject.textAlign = 'left';
-      //       canvas.renderAll();
-      //     }
-      //   });
-      // $("#text-center").click(function() {
-      //     var activeObject = canvas.getActiveObject();
-      //     if (activeObject && activeObject.type === 'text') {
-      //         activeObject.textAlign = 'center';
-      //       canvas.renderAll();
-      //     }
-      //   });
-      // $("#text-right").click(function() {
-      //     var activeObject = canvas.getActiveObject();
-      //     if (activeObject && activeObject.type === 'text') {
-      //         activeObject.textAlign = 'right';
-      //       canvas.renderAll();
-      //     }
-      //   });
-      // $("#font-family").change(function() {
-      //     var activeObject = canvas.getActiveObject();
-      //     if (activeObject && activeObject.type === 'text') {
-      //       activeObject.fontFamily = this.value;
-      //       canvas.renderAll();
-      //     }
-      //   });
-      //   $('#text-bgcolor').miniColors({
-      //       change: function(hex, rgb) {
-      //         var activeObject = canvas.getActiveObject();
-      //         if (activeObject && activeObject.type === 'text') {
-      //             activeObject.backgroundColor = this.value;
-      //           canvas.renderAll();
-      //         }
-      //       },
-      //       open: function(hex, rgb) {
-      //           //
-      //       },
-      //       close: function(hex, rgb) {
-      //           //
-      //       }
-      //   });
-      //   $('#text-fontcolor').miniColors({
-      //       change: function(hex, rgb) {
-      //         var activeObject = canvas.getActiveObject();
-      //         if (activeObject && activeObject.type === 'text') {
-      //             activeObject.fill = this.value;
-      //             canvas.renderAll();
-      //         }
-      //       },
-      //       open: function(hex, rgb) {
-      //           //
-      //       },
-      //       close: function(hex, rgb) {
-      //           //
-      //       }
-      //   });
-      //
-      //   $('#text-strokecolor').miniColors({
-      //       change: function(hex, rgb) {
-      //         var activeObject = canvas.getActiveObject();
-      //         if (activeObject && activeObject.type === 'text') {
-      //             activeObject.strokeStyle = this.value;
-      //             canvas.renderAll();
-      //         }
-      //       },
-      //       open: function(hex, rgb) {
-      //           //
-      //       },
-      //       close: function(hex, rgb) {
-      //           //
-      //       }
-      //   });
+
 
         //canvas.add(new fabric.fabric.Object({hasBorders:true,hasControls:false,hasRotatingPoint:false,selectable:false,type:'rect'}));
        $("#drawingArea").hover(
@@ -277,7 +147,6 @@ var line4;
                     canvas.calcOffset();
                 },200);
         });
-      //  $(".clearfix button,a").tooltip();
        line1 = new fabric.Line([0,0,200,0], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
        line2 = new fabric.Line([199,0,200,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
        line3 = new fabric.Line([0,0,0,400], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
