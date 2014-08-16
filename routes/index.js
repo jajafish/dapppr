@@ -90,3 +90,13 @@ exports.showUserProductsPage = function (req, res) {
     });
 
 };
+
+
+exports.editProduct = function(req, res) {
+
+    res.header('content-type', 'text/html');
+    res.render('editProduct', {
+        user: data
+    });
+
+};

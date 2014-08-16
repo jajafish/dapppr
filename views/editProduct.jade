@@ -5,7 +5,7 @@ block content
     #tab2.tab-pane
         .well
             #avatarlist
-                for png in user.shots
+                for png in user.rawArtwork
                     img.img-polaroid(style='cursor: pointer;', src="#{png.image_url}")
 
     button#remove-selected DELETE

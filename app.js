@@ -32,16 +32,13 @@ app.use(bodyParser.json());
 // USER MODEL
 require("./models/User")(mongooseConnection);
 
-
 // SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);
 
 app.post('/', routes.postUserName);
 
 // EDIT SHIRT
-app.get('/editShirt', function(req, res){
-    res.render('editProduct');
-});
+app.get('/editShirt', routes.editProduct);
 
 // SHOW USER PRODUCTS PAGE
 app.get('/:userId', routes.showUserProductsPage);
