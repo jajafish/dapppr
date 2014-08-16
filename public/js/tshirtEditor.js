@@ -104,13 +104,13 @@ var line4;
 
 
 
-        var canvas = document.getElementById('tcanvas');
-        console.log(canvas);
-        var c = canvas.getContext('2d');
-        console.log(c);
-
-        window.open('', document.getElementById('tcanvas').toDataURL());
+        // var canvas = document.getElementById('tcanvas');
+        // console.log(canvas);
+        // var c = canvas.getContext('2d');
+        // console.log(c);
         //
+        // window.open('', document.getElementById('tcanvas').toDataURL());
+
         // var dataURL = canvas.toDataURL('image/png');
         // document.getElementById('tcanvas').src = dataURL;
         //
