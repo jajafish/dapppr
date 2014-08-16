@@ -19,9 +19,7 @@ app.use(function (req, res, next){
     next();
 });
 
-
 app.get('/', routes.sayHello);
-
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');

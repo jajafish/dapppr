@@ -1,11 +1,10 @@
 var dribbbleAPI = require('../apiRequests/dribbbleService');
 
-
 exports.sayHello = function (req, res) {
 
-
-    res.render('signup');
-
-
+    dribbbleAPI.getDribbbleDataForUser(function(err, dData){
+        res.header('content-type', 'text/html');
+        res.send(dData);
+    });
 
 };
