@@ -47,7 +47,7 @@ server.listen(3000);
 // });
 
 // SHOW USER PRODUCTS PAGE
-// app.get('/:userId', routes.showUserProductsPage);
+app.get('/:userId', routes.showUserProductsPage);
 
 // SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);

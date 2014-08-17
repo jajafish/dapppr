@@ -54,65 +54,35 @@ exports.postUserName = function (req, res) {
             artist.set('userPortfolioURL', dribbbleUserShots[0].player.url);
             artist.set('userAvatar_url', dribbbleUserShots[0].player.avatar_url);
             artist.set('userArtWork', usersArtWorkURLs);
+            artist.set('artistID', artist.id);
             artist.save(null, {
                 success: function(artist) {
-                    console.log(artist);
+                    var artistID = artist.id;
+                    console.log(artistID);
+                    res.redirect('/' +artistID);
                 }, error: function(artist, error) {
                     console.log(error.message);
                 }
             });
-
-
-
 
         });
 
 
 };
 
-// exports.showUserProductsPage = function (req, res) {
+exports.showUserProductsPage = function (req, res) {
 
-//     mongo                   = require('mongodb'),
-// mongoUSER = "johnnyJones:";
-// mongoPASS = "pingpong1";
-// mongoROUTE = "mongodb://";
-// fullMongoURI = mongoROUTE + mongoUSER + mongoPASS + "@ds063449.mongolab.com:63449/dapppr";
+    console.log(req.params);
 
-//     var id = req.params.userId;
-//     // console.log(id);
-
-//     // var BSON = require('mongodb').BSONPure;
-//     // var obj_id = BSON.ObjectID.createFromHexString(id);
-
-//     mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
-//         console.log("THIS IS THE DB: "+db[0]);
-//         var users = db.collection('users');
-//         users.find({
-//             _id: id
-//         }).toArray(function(err, docs){
-//             console.log("outer docs: "+docs);
-
-//             res.header('content-type', 'text/html');
-//             res.render('myproducts', {
-
-//                 user: docs
-
-//             });
-
-//         });
-
-//     });
-
-
-
-// };
-
-
-exports.editProduct = function(req, res) {
-
-    res.header('content-type', 'text/html');
-    res.render('editProduct', {
-        user: data
-    });
 
 };
+
+
+// exports.editProduct = function(req, res) {
+
+//     res.header('content-type', 'text/html');
+//     res.render('editProduct', {
+//         user: data
+//     });
+
+// };
