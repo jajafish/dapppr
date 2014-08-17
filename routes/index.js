@@ -26,7 +26,6 @@ exports.postUserName = function (req, res) {
         var dribbbleUserShots = dribbbleUserResponse.shots;
         var usersArtWorkURLs = [];
 
-
         var PNGREGEX = /\.(png)\b/;
 
         for (var i = 0; i < 14; i++) {
@@ -46,73 +45,67 @@ exports.postUserName = function (req, res) {
 
         }
 
+            var Artist = Parse.Object.extend('Artist');
+            var artist = new Artist();
 
-        mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
-
-            db.collection('users', function(err, collection) {
-                doc = {
-                    "name" : dribbbleUserShots[0].player.name,
-                    "userFollowers" : dribbbleUserShots[0].player.followers_count,
-                    "userLikes" : dribbbleUserShots[0].player.likes_received_count,
-                    "userPortfolioURL" : dribbbleUserShots[0].player.url,
-                    "userAvatar_url" : dribbbleUserShots[0].player.avatar_url,
-                    "userArtWork" : usersArtWorkURLs
-                };
-
-                collection.insert(doc, function() {
-
-                    var id = doc._id;
-                    res.header('content-type', 'text/html');
-                    res.redirect('/' +id);
-
-                    db.close();
-                });
+            artist.set('name', dribbbleUserShots[0].player.name);
+            artist.set('userFollowers', dribbbleUserShots[0].player.followers_count);
+            artist.set('userLikes', dribbbleUserShots[0].player.likes_received_count);
+            artist.set('userPortfolioURL', dribbbleUserShots[0].player.url);
+            artist.set('userAvatar_url', dribbbleUserShots[0].player.avatar_url);
+            artist.set('userArtWork', usersArtWorkURLs);
+            artist.save(null, {
+                success: function(artist) {
+                    console.log(artist);
+                }, error: function(artist, error) {
+                    console.log(error.message);
+                }
             });
+
+
+
 
         });
 
 
-
-    });
-
 };
 
-exports.showUserProductsPage = function (req, res) {
+// exports.showUserProductsPage = function (req, res) {
 
-    mongo                   = require('mongodb'),
-mongoUSER = "johnnyJones:";
-mongoPASS = "pingpong1";
-mongoROUTE = "mongodb://";
-fullMongoURI = mongoROUTE + mongoUSER + mongoPASS + "@ds063449.mongolab.com:63449/dapppr";
+//     mongo                   = require('mongodb'),
+// mongoUSER = "johnnyJones:";
+// mongoPASS = "pingpong1";
+// mongoROUTE = "mongodb://";
+// fullMongoURI = mongoROUTE + mongoUSER + mongoPASS + "@ds063449.mongolab.com:63449/dapppr";
 
-    var id = req.params.userId;
-    // console.log(id);
+//     var id = req.params.userId;
+//     // console.log(id);
 
-    // var BSON = require('mongodb').BSONPure;
-    // var obj_id = BSON.ObjectID.createFromHexString(id);
+//     // var BSON = require('mongodb').BSONPure;
+//     // var obj_id = BSON.ObjectID.createFromHexString(id);
 
-    mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
-        console.log("THIS IS THE DB: "+db[0]);
-        var users = db.collection('users');
-        users.find({
-            _id: id
-        }).toArray(function(err, docs){
-            console.log("outer docs: "+docs);
+//     mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
+//         console.log("THIS IS THE DB: "+db[0]);
+//         var users = db.collection('users');
+//         users.find({
+//             _id: id
+//         }).toArray(function(err, docs){
+//             console.log("outer docs: "+docs);
 
-            res.header('content-type', 'text/html');
-            res.render('myproducts', {
+//             res.header('content-type', 'text/html');
+//             res.render('myproducts', {
 
-                user: docs
+//                 user: docs
 
-            });
+//             });
 
-        });
+//         });
 
-    });
+//     });
 
 
 
-};
+// };
 
 
 exports.editProduct = function(req, res) {
