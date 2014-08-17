@@ -81,20 +81,19 @@ exports.showUserProductsPage = function (req, res) {
     var id = req.params.userId;
     console.log(id);
 
+    var BSON = require('mongodb').BSONPure;
+    var obj_id = BSON.ObjectID.createFromHexString(id);
+
     mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
 
-
         var users = db.collection('users');
-        users.find().toArray(function(err, docs){
+        users.find({
+            _id: obj_id
+        }).toArray(function(err, docs){
             console.log(docs);
         });
 
-
-
-
     });
-
-
 
 
 };
