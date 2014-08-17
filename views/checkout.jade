@@ -1,0 +1,26 @@
+extends layout
+
+block content
+
+	div.wrap-checkout
+		h1.checkout Buy shirt from
+		h2.checkout X ARTIST
+		h2.checkout Y DESIGN TITLE
+		h2.checkout Z SIZE
+		h2.checkout W Color
+
+		div.picOfFinalProduct
+
+		form.checkout(action='/shirtsAPI', method="POST")
+			input(type="text" name="name" placeholder="Name",onfocus="this.placeholder = ''", onblur="this.placeholder = 'Name'")
+			input(type="text" name="address" placeholder="Address",onfocus="this.placeholder = ''", onblur="this.placeholder = 'Address'")
+			input(type="text" name="address2" placeholder="Address 2",onfocus="this.placeholder = ''", onblur="this.placeholder = 'Address 2'")
+			input(type="text" name="city" placeholder="City",onfocus="this.placeholder = ''", onblur="this.placeholder = 'City'")
+			input(type="text" name="state" placeholder="State",onfocus="this.placeholder = ''", onblur="this.placeholder = 'State'")
+			input(type="text" name="zip" placeholder="Zip",onfocus="this.placeholder = ''", onblur="this.placeholder = 'Zip'")
+			input(type="text" name="country" placeholder="Country",onfocus="this.placeholder = ''", onblur="this.placeholder = 'Country'")
+
+
+
+		a(href='/thanks')
+			button.checkout Buy

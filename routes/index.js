@@ -45,7 +45,7 @@ exports.postUserName = function (req, res) {
 
         }
 
-            var artist = new Artist();
+          var artist = new Artist();
 
             artist.set('name', dribbbleUserShots[0].player.name);
             artist.set('userFollowers', dribbbleUserShots[0].player.followers_count);
@@ -73,13 +73,77 @@ exports.showUserProductsPage = function (req, res) {
     // console.log(req.params);
     var artistID = req.params.userId;
 
+    var colors =
+      [{
+        'name' : 'Black',
+        'background_color': '#0c070b'
+      },{
+        'name': 'Caribbean',
+        'background_color': '#20b4ce'
+      }, {
+        'name': 'Heather Dark Grey',
+        'background_color': '#6f727b'
+      }, {
+        'name': 'Hot Pink',
+        'background_color': '#fe7ca0',
+      }, {
+        'name': 'Kelly Green',
+        'background_color': '#1e9569'
+      },{
+        'name':'Key Lime',
+        'background_color': '#69bc46'
+      },{
+        'name':'Lemon Zest',
+        'background_color': '#ece80b'
+      },{
+        'name':'Lemon Zest',
+        'background_color': '#ece80b'
+      },{
+        'name':'Navy',
+        'background_color': '#14214d'
+      },{
+        'name':'Neon Blue',
+        'background_color': '#2F549A'
+      },{
+        'name': 'Neon Green',
+        'background_color': '#90C593'
+      },{
+        'name': 'Kiwi',
+        'background_color': '#8aa140'
+      },{
+        'name':'Neon Orange',
+         'background_color': '#1f6522'
+      },{
+        'name': 'Neon Pink',
+        'background_color': '#E99EBC'
+      },{
+        'name': 'Neon Yellow',
+        'background_color': '#EEEA84'
+      },{
+        'name': 'Pool Blue',
+        'background_color': '#3BB5CF'
+      },{
+        'name': 'Red',
+        'background_color': '#cc1d44'
+      },{
+        'name': 'Royal Blue',
+        'background_color': '#27488b'
+      },{
+        'name': 'Storm Grey',
+        'background_color': '#326AAE'
+      },{
+        'name': 'White',
+        'background_color': '#f4f4f4'
+      }];
+
     var query = new Parse.Query(Artist);
     query.get(artistID, {
         success: function(artist){
             console.log(artist);
-
             res.render('myproducts', {
-                user: artist._serverData
+                user: artist._serverData,
+                colorObject: colors,
+                userID: artist.id
             });
 
         }
@@ -87,18 +151,21 @@ exports.showUserProductsPage = function (req, res) {
 
 };
 
-exports.editProduct = function (req, res) {
 
-    var artistID = req.params.userId;
-    var artworkID = req.params.artworkId;
+exports.editUserProductsPage = function (req, res) {
 
-    var query = new Parse.Query(Artist);
-    query.get(artistID, {
-        success: function(artist){
-            res.render('editProduct', {
-                user: artist._serverData
-            });
-        }
-    });
+  var artistID = req.params.userId;
+
+  var query = new Parse.Query(Artist);
+  query.get(artistID, {
+      success: function(artist){
+          console.log("here is the artist from edit " +artist);
+          console.log("artist id is " +artist.id);
+          res.render('editProduct', {
+              user: artist._serverData
+          });
+
+      }
+  });
 
 };

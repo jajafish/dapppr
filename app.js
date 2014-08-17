@@ -15,9 +15,9 @@ var express                 = require('express'),
 
 Parse = require('parse').Parse;
 Artist = Parse.Object.extend('Artist');
- 
+
 Parse.initialize("1m5YuobBTxJaGyIS5TfdJPY0hWsNiRYKxR9x6XFy", "7qklAQq7GXWNspOc4ZSaS6a1ZPNMSF8CEijqgQL2");
- 
+
 var query = new Parse.Query(Parse.User);
 query.find({
   success: function(users) {
@@ -25,19 +25,36 @@ query.find({
       console.log(users[i].get('username'));
     }
   }
-});                 
-    
+});
+
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser());
 app.use(bodyParser.json());
+app.use(function(req, res, next){
+  console.log('%s %s', req.method, req.url);
+  next();
+});
 
 app.set('port', 3000);
 server.listen(3000);
 
+app.get('/checkout', function(req, res){
+    res.render('checkout');
+});
+app.get('/thanks', function(req, res){
+    res.render('thanks');
+});
+app.get('/:userId/edit', routes.editUserProductsPage);
+app.get('/:userId', routes.showUserProductsPage);
+
+
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);
+<<<<<<< HEAD
 app.get('/:userId', routes.showUserProductsPage);
 app.get('/:userId/:artworkId', routes.editProduct);
+=======
+>>>>>>> 2c8f5a91e8764ccdd142381f77ebd80112786cac
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
