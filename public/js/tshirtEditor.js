@@ -84,11 +84,12 @@ $(document).ready(function() {
             });
     });
 
+    if ($('#save-product') > 1){
+      document.getElementById('save-product').onclick = function() {
 
-    document.getElementById('save-product').onclick = function() {
-
-      saveProduct();
-    };
+        saveProduct();
+      };
+    }
 
 
     function saveProduct(){

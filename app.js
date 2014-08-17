@@ -38,14 +38,15 @@ app.use(function(req, res, next){
 app.set('port', 3000);
 server.listen(3000);
 
-app.get('/:userId/edit', routes.editUserProductsPage);
-app.get('/:userId', routes.showUserProductsPage);
 app.get('/checkout', function(req, res){
     res.render('checkout');
 });
 app.get('/thanks', function(req, res){
     res.render('thanks');
 });
+app.get('/:userId/edit', routes.editUserProductsPage);
+app.get('/:userId', routes.showUserProductsPage);
+
 
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);

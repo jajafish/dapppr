@@ -3,15 +3,13 @@ extends layout
 block content
 
 	div.wrap-checkout
-		h1.checkout Buy shirt from 
+		h1.checkout Buy shirt from
 		h2.checkout X ARTIST
 		h2.checkout Y DESIGN TITLE
 		h2.checkout Z SIZE
 		h2.checkout W Color
 
-		div.picOfFinalProduct  
-
-
+		div.picOfFinalProduct
 
 		form.checkout(action='/shirtsAPI', method="POST")
 			input(type="text" name="name" placeholder="Name",onfocus="this.placeholder = ''", onblur="this.placeholder = 'Name'")

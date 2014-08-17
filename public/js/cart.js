@@ -14,6 +14,7 @@ $('.size-container').on('click', function() {
   } else {
     $(this).html('ADDED');
   }
+  document.location.href = '../checkout';
 
 });
 
