@@ -9,9 +9,10 @@ exports.signUpPage = function (req, res) {
 exports.postUserName = function (req, res) {
 
     var username = req.body.dribbbleUserName;
-    var request  = require('request');
+    console.log("from the dribbble service the username is " +username);
 
-    request({
+    var requestForUserInformation  = require('request');
+    requestForUserInformation({
         uri: "http://api.dribbble.com/players/"+username+"/shots",
         method: "GET",
         timeout: 10000,
@@ -19,18 +20,11 @@ exports.postUserName = function (req, res) {
         maxRedirects: 10,
     }, function(err, response, body){
 
+        // console.log(body);
+
         var dribbbleUserResponse = JSON.parse(body);
         var dribbbleUserShots = dribbbleUserResponse.shots;
-
-        var dribbbleUser = {
-            userName: dribbbleUserShots[0].player.name,
-            userFollowers: dribbbleUserShots[0].player.followers_count,
-            userLikes: dribbbleUserShots[0].player.likes_received_count,
-            portfolioURL: dribbbleUserShots[0].player.url,
-            avatarURL: dribbbleUserShots[0].player.avatar_url,
-            shots: []
-        };
-
+        var usersArtWorkURLs = [];
 
         var PNGREGEX = /\.(png)\b/;
 
@@ -46,31 +40,50 @@ exports.postUserName = function (req, res) {
                     likes: dribbbleUserShots[i].likes_count
                 };
 
-                dribbbleUser.shots.push(shotObject);
+                usersArtWorkURLs.push(shotObject);
             }
 
         }
 
-        req.user = dribbbleUser;
+            var artist = new Artist();
 
-        res.header('content-type', 'text/html');
-        res.render('editProduct', {
-            user: dribbbleUser
-        // res.render('myproducts', {
-        //     user: dribbbleUser,
-        //     username: username
+            artist.set('name', dribbbleUserShots[0].player.name);
+            artist.set('userFollowers', dribbbleUserShots[0].player.followers_count);
+            artist.set('userLikes', dribbbleUserShots[0].player.likes_received_count);
+            artist.set('userPortfolioURL', dribbbleUserShots[0].player.url);
+            artist.set('avatar_url', dribbbleUserShots[0].player.avatar_url);
+            artist.set('userArtWork', usersArtWorkURLs);
+            artist.set('artistID', artist.id);
+            artist.save(null, {
+                success: function(artist) {
+                    var artistID = artist.id;
+                    // console.log(artistID);
+                    res.redirect('/' +artistID);
+                }, error: function(artist, error) {
+                    console.log(error.message);
+                }
+            });
+
         });
-
-
-    });
 
 
 };
 
+exports.showUserProductsPage = function (req, res) {
 
-// exports.myProducts = function (req, res) {
-//
-//     res.render('myproducts', {
-//     });
-//
-// };
+    // console.log(req.params);
+    var artistID = req.params.userId;
+
+    var query = new Parse.Query(Artist);
+    query.get(artistID, {
+        success: function(artist){
+            console.log(artist);
+
+            res.render('myproducts', {
+                user: artist._serverData
+            });
+
+        }
+    });
+
+};

@@ -24,6 +24,7 @@
     "jade" : "*",
     "request" : "*",
     "body-parser": "*",
+    "config" : "*",
     "base64-js-codec": "1.0.0"
   }
 }
