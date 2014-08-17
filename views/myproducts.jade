@@ -9,15 +9,16 @@ block content
       img.user_pic.profile_center(src='#{user.avatarURL}')
       h2.user_name.profile_center
         | #{user.userName}
-      h2.profile_center  #{user.userLikes} Likes
+      h2.profile_center  #{user.userLikes} LIKES
       h2.profile_center_link
         a(href='https://dribbble.com/#{username}') dribbble account
 
+
+    a.alert 
+      //- p Enjoy the example of your dapppr store? 
+      //- .btn Activate Your Store Now.   
   
-    div.alert
-      p Enjoy the example of your dribbble store? Click or tap the settings icon to activate your dribble store. You can always edit your store contents later on.
-  
-    section.products
+    section.products 
       div.grid
         for png, index in user.shots 
           div(class='col-'+index)
@@ -29,4 +30,6 @@ block content
       h1.dapppr_footer_title 
         a(href="#") dapppr 
         span.about | about
+
+
 

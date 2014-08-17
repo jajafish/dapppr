@@ -9,7 +9,6 @@ exports.signUpPage = function (req, res) {
 exports.postUserName = function (req, res) {
 
     var username = req.body.dribbbleUserName;
-
     var request  = require('request');
 
     request({
