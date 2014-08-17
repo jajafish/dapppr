@@ -42,8 +42,6 @@ exports.postUserName = function (req, res) {
 
                 usersArtWorkURLs.push(shotObject);
             }
-            
-            console.log(usersArtWorkURLs);
 
             var design = {
               type: "dtg",
@@ -54,12 +52,10 @@ exports.postUserName = function (req, res) {
                 }
               }
             };
-            
 
-
-            var request         = require('request');
+            var designRequest         = require('request');
             postDesign = function(design){
-              request.post('https://api.scalablepress.com/v2/design', {
+              designRequest.post('https://api.scalablepress.com/v2/design', {
                 'auth': {
                   'user': '',
                   'pass': '2e93f7ea8b4dcd09a0e72df2a7ec0d70'
@@ -67,12 +63,45 @@ exports.postUserName = function (req, res) {
                 json: true,
                 body: design
               }, function (err, res, body) {
-                console.log(res.statusCode, body);
+                // console.log(res.statusCode, body);
 
-                    var arrayOfProductQuoteIDs = [];
-                    arrayOfProductQuoteIDs.push(body.designId);
-                    console.log("quote ids are " +arrayOfProductQuoteIDs);
+                    var quote  = {
+                      type: "dtg",
+                      designId: body.designId,
+                      sides: {front: 1},
+                      products: [{
+                        id: "anvil-100-cotton-t-shirt",
+                        color: "white",
+                        size: "lrg",
+                        quantity: 1
+                      }],
+                      address: {
+                        name: "Genesis Kim",
+                        company: "rsvip",
+                        address1: "530 Brannan Street",
+                        address2: "Apt 310",
+                        city: "San Francisco",
+                        state: "California",
+                        zip: "94107",
+                        country: "US"
+                        }
+                    }
 
+                    var quoteRequest         = require('request');
+                    postQuote = function(quote){
+                      quoteRequest.post('https://api.scalablepress.com/v2/quote', {
+                        'auth': {
+                          'user': '',
+                          'pass': '2e93f7ea8b4dcd09a0e72df2a7ec0d70'
+                        },
+                        json: true,
+                        body: quote
+                      }, function (err, res, body) {
+                        console.log("here is the quote response " +res.statusCode, body);
+                      });
+                     
+                    };
+                    postQuote(quote);
               });
             };
 
