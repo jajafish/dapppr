@@ -1,6 +1,15 @@
 $(document).ready(function() {
 
 
+  $('#loader-container').css('display', 'block');
+
+ $(window).load(function() {
+
+   $('#loader-container').css('display', 'none');
+
+
+ });
+
 $('.size-container').on('click', function() {
 
   if ($(this).html() === "ADDED"){
