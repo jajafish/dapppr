@@ -24,6 +24,28 @@ exports.postUserName = function (req, res) {
 
         var dribbbleUserResponse = JSON.parse(body);
         var dribbbleUserShots = dribbbleUserResponse.shots;
+        var usersArtWorkURLs = [];
+
+
+        var PNGREGEX = /\.(png)\b/;
+
+        for (var i = 0; i < 14; i++) {
+
+            var currentImageUrl = dribbbleUserShots[i].image_url;
+
+            if (PNGREGEX.exec(currentImageUrl)) {
+
+                var shotObject = {
+                    imageName: dribbbleUserShots[i].title,
+                    image_url: dribbbleUserShots[i].image_url,
+                    likes: dribbbleUserShots[i].likes_count
+                };
+
+                usersArtWorkURLs.push(shotObject);
+            }
+
+        }
+
 
         mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
 
@@ -33,13 +55,13 @@ exports.postUserName = function (req, res) {
                     "userFollowers" : dribbbleUserShots[0].player.followers_count,
                     "userLikes" : dribbbleUserShots[0].player.likes_received_count,
                     "userPortfolioURL" : dribbbleUserShots[0].player.url,
-                    "userAvatar_url" : dribbbleUserShots[0].player.avatar_url
+                    "userAvatar_url" : dribbbleUserShots[0].player.avatar_url,
+                    "userArtWork" : usersArtWorkURLs
                 };
                 collection.insert(doc, function() {
                     db.close();
                 });
             });
-
 
         });
 
