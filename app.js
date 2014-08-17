@@ -12,6 +12,10 @@ var express                 = require('express'),
     util                    = require('util'),
     mime                    = require('mime');
     
+app.use(express.static(__dirname + "/public"));
+app.use(bodyParser());
+app.use(bodyParser.json());
+    
 mongo                   = require('mongodb'),
 mongoUSER = "johnnyJones:";
 mongoPASS = "pingpong1";
@@ -21,9 +25,7 @@ fullMongoURI = mongoROUTE + mongoUSER + mongoPASS + "@ds063449.mongolab.com:6344
 app.set('port', 3000);
 server.listen(3000);
 
-app.use(express.static(__dirname + "/public"));
-app.use(bodyParser());
-app.use(bodyParser.json());
+
 
 // app.use(function (req, res, next){
 //     console.log(req.body);
@@ -39,26 +41,7 @@ app.post('/', routes.postUserName);
 // app.get('/editShirt', routes.editProduct);
 
 // SHOW USER PRODUCTS PAGE
-// app.get('/:userId', routes.showUserProductsPage);
-
-
-app.get('/hello', function (req, res){
-
-    mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
-
-        db.collection('phrases', function(err, collection) {
-            doc = {
-                "hello" : "you"
-            };
-            collection.insert(doc, function() {
-                db.close();
-            });
-        });
-
-
-    });
-
-});
+app.get('/:userId', routes.showUserProductsPage);
 
 
 

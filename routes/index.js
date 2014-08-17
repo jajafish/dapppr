@@ -59,11 +59,18 @@ exports.postUserName = function (req, res) {
                     "userArtWork" : usersArtWorkURLs
                 };
                 collection.insert(doc, function() {
+
+                    var id = doc._id;
+                    res.header('content-type', 'text/html');
+                    res.redirect('/' +id);
+
                     db.close();
                 });
             });
 
         });
+
+
 
     });
 
@@ -71,21 +78,24 @@ exports.postUserName = function (req, res) {
 
 exports.showUserProductsPage = function (req, res) {
 
-    var User = mongoose.model('User');
     var id = req.params.userId;
-    User.findOne({"_id" : id}, function(err, data){
-        console.log(id);
+    console.log(id);
 
-        // res.json(data);
-        if (err){
-            res.send("error man");
-        } else {
-            console.log(data);
-            res.render('myproducts', {
-                user: data 
-            });
-        }
+    mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
+
+
+        var users = db.collection('users');
+        users.find().toArray(function(err, docs){
+            console.log(docs);
+        });
+
+
+
+
     });
+
+
+
 
 };
 
