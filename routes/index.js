@@ -45,7 +45,6 @@ exports.postUserName = function (req, res) {
 
         }
 
-            var Artist = Parse.Object.extend('Artist');
             var artist = new Artist();
 
             artist.set('name', dribbbleUserShots[0].player.name);
@@ -73,7 +72,17 @@ exports.postUserName = function (req, res) {
 exports.showUserProductsPage = function (req, res) {
 
     console.log(req.params);
+    var artistID = req.params.userId;
 
+    var query = new Parse.Query(Artist);
+    query.get(artistID, {
+        success: function(artist){
+            res.render('myproducts', {
+                user: artist
+            });
+
+        }
+    });
 
 };
 
