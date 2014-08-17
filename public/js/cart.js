@@ -13,11 +13,14 @@ $('.size-container').on('click', function() {
     }
   } else {
     $(this).html('ADDED');
-    var imgSrcVal = $(this).children("img.prod_img").attr("src");
-    console.log($('this > .shirt-items '));
   }
 
 });
+
+
+var imgSrcVal = $("img.prod_img").attr("src");
+console.log(imgSrcVal);
+
 
 
 

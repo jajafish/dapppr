@@ -6,10 +6,12 @@ block content
 
   div.wrap
     section.user_profile
+      img.likes_heart(src='img/dapppr-02.png')
       img.user_pic.profile_center(src='#{user.avatar_url}')
       h2.user_name.profile_center
         | #{user.name}
-      h2.profile_center  #{user.userLikes} LIKES
+      h2.profile_center.likes_number #{user.userLikes}
+      img.profile_center.likes_heart(src='img/dapppr-03.png')
       h2.profile_center_link
         a(href='https://dribbble.com/#{username}') dribbble account
 
