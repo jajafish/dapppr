@@ -198,6 +198,7 @@ span.dspan{color:green;}
   display: block;
   margin: 0 auto;
   text-align: center;
+  overflow:hidden;
 }
 
 .profile_center_link{
@@ -238,8 +239,13 @@ span.dspan{color:green;}
 
 
 .prod_img{
-  max-height: 100%;
-  max-width: 100%;
+  max-height: 70%;
+  max-width: 70%;
+  left: 14%;
+  top: 30%;
+  -webkit-background-blend-mode: darken, multiply;
+          background-blend-mode: darken, multiply;
+  position: absolute;
   -webkit-transition: all 1s ease;
      -moz-transition: all 1s ease;
        -o-transition: all 1s ease;
@@ -247,6 +253,14 @@ span.dspan{color:green;}
           transition: all 1s ease;
 }
 
+.profile_shirts{
+  position: absolute;
+  z-index: 0;
+  height:200%;
+  width:200%;
+  top: -10%;
+  left: -50%;
+}
 
 .product {
     max-width:64em;/* 1024px; */
@@ -381,7 +395,7 @@ span.about{
   }
 
   h1.sign-up-logo{
-  
+
   font-size:7em;
 }
 

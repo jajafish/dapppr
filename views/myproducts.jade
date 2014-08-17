@@ -9,28 +9,29 @@ block content
     section.user_profile
       img.user_pic.profile_center(src='#{user.avatar_url}')
       h2.user_name.profile_center
-        | #{user.userName}
+        | #{user.name}
       h2.profile_center  #{user.userLikes} LIKES
       h2.profile_center_link
         a(href='https://dribbble.com/#{username}') dribbble account
 
 
 
-    a.alert 
-      //- p Enjoy the example of your dapppr store? 
-      //- .btn Activate Your Store Now.   
-  
-    section.products 
+    a.alert
+      //- p Enjoy the example of your dapppr store?
+      //- .btn Activate Your Store Now.
+
+    section.products
 
       div.grid
         for png in user.userArtWork
           div(class='col-'+index)
             div.item-container
-              img.prod_img.profile_center(src='#{png.image_url}')
+              div.profile_center(style='width: 265px; height: 315px; position: relative; background-color: rgb(255, 255, 255);')
+                img.profile_shirts(src='img/crew_front.png' style='background-color: rgb(255, 255, 255)')
+                img.prod_img.profile_center(src='#{png.image_url}' style='z-index: 10;')
 
   section.footer
     div.wrap-big
       h1.dapppr_footer_title
         a(href="#") dapppr
         span.about | about
-
