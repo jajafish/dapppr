@@ -159,8 +159,7 @@ exports.editUserProductsPage = function (req, res) {
   var query = new Parse.Query(Artist);
   query.get(artistID, {
       success: function(artist){
-          console.log("here is the artist from edit " +artist);
-          console.log("artist id is " +artist.id);
+
           res.render('editProduct', {
               user: artist._serverData
           });

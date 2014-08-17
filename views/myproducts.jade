@@ -29,12 +29,12 @@ block content
     section.products
 
       div.grid
-        for png in user.userArtWork
+        for png, index in user.userArtWork
           div(class='col-'+index)
             div.item-container
-              div.size-container(user-select='none') #{user.userArtWork.imageName} small
+              div.size-container(user-select='none') small
               div.size-container.medium(user-select='none') medium
-              div.size-container.large(user-select='none') large
+              div.size-container.large(user-select='none')  large
               div.profile_center.shirt-items(style='width: 265px; height: 315px; position: relative; background-color: rgb(255, 255, 255);')
                 img.profile_shirts(src='img/crew_front.png' style='background-color: #{randomizeColor()}')
                 img.prod_img.profile_center(src='#{png.image_url}' style='z-index: 10;')
