@@ -20,7 +20,7 @@ block content
 
     section.products
       div.grid
-        for png, index in user.rawArtwork
+        for png in user.userArtWork
           div(class='col-'+index)
             div.item-container
               img.prod_img.profile_center(src='#{png.image_url}')

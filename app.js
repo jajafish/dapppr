@@ -11,57 +11,32 @@ var express                 = require('express'),
     fs                      = require('fs'),
     util                    = require('util'),
     mime                    = require('mime');
+
+
+Parse = require('parse').Parse;
+Artist = Parse.Object.extend('Artist');
+ 
+Parse.initialize("1m5YuobBTxJaGyIS5TfdJPY0hWsNiRYKxR9x6XFy", "7qklAQq7GXWNspOc4ZSaS6a1ZPNMSF8CEijqgQL2");
+ 
+var query = new Parse.Query(Parse.User);
+query.find({
+  success: function(users) {
+    for (var i = 0; i < users.length; ++i) {
+      console.log(users[i].get('username'));
+    }
+  }
+});                 
     
-mongo                   = require('mongodb'),
-mongoUSER = "johnnyJones:";
-mongoPASS = "pingpong1";
-mongoROUTE = "mongodb://";
-fullMongoURI = mongoROUTE + mongoUSER + mongoPASS + "@ds063449.mongolab.com:63449/dapppr";
-
-app.set('port', 3000);
-server.listen(3000);
-
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser());
 app.use(bodyParser.json());
 
-// app.use(function (req, res, next){
-//     console.log(req.body);
-//     next();
-// });
+app.set('port', 3000);
+server.listen(3000);
 
-// SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);
-
 app.post('/', routes.postUserName);
-
-// EDIT SHIRT
-// app.get('/editShirt', routes.editProduct);
-
-// SHOW USER PRODUCTS PAGE
-// app.get('/:userId', routes.showUserProductsPage);
-
-
-app.get('/hello', function (req, res){
-
-    mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
-
-        db.collection('phrases', function(err, collection) {
-            doc = {
-                "hello" : "you"
-            };
-            collection.insert(doc, function() {
-                db.close();
-            });
-        });
-
-
-    });
-
-});
-
-
-
+app.get('/:userId', routes.showUserProductsPage);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');

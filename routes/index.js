@@ -20,12 +20,11 @@ exports.postUserName = function (req, res) {
         maxRedirects: 10,
     }, function(err, response, body){
 
-        console.log(body);
+        // console.log(body);
 
         var dribbbleUserResponse = JSON.parse(body);
         var dribbbleUserShots = dribbbleUserResponse.shots;
         var usersArtWorkURLs = [];
-
 
         var PNGREGEX = /\.(png)\b/;
 
@@ -46,55 +45,45 @@ exports.postUserName = function (req, res) {
 
         }
 
+            var artist = new Artist();
 
-        mongo.MongoClient.connect(fullMongoURI, {server: {auto_reconnect: true}}, function (err, db){
-
-            db.collection('users', function(err, collection) {
-                doc = {
-                    "name" : dribbbleUserShots[0].player.name,
-                    "userFollowers" : dribbbleUserShots[0].player.followers_count,
-                    "userLikes" : dribbbleUserShots[0].player.likes_received_count,
-                    "userPortfolioURL" : dribbbleUserShots[0].player.url,
-                    "userAvatar_url" : dribbbleUserShots[0].player.avatar_url,
-                    "userArtWork" : usersArtWorkURLs
-                };
-                collection.insert(doc, function() {
-                    db.close();
-                });
+            artist.set('name', dribbbleUserShots[0].player.name);
+            artist.set('userFollowers', dribbbleUserShots[0].player.followers_count);
+            artist.set('userLikes', dribbbleUserShots[0].player.likes_received_count);
+            artist.set('userPortfolioURL', dribbbleUserShots[0].player.url);
+            artist.set('avatar_url', dribbbleUserShots[0].player.avatar_url);
+            artist.set('userArtWork', usersArtWorkURLs);
+            artist.set('artistID', artist.id);
+            artist.save(null, {
+                success: function(artist) {
+                    var artistID = artist.id;
+                    // console.log(artistID);
+                    res.redirect('/' +artistID);
+                }, error: function(artist, error) {
+                    console.log(error.message);
+                }
             });
 
         });
 
-    });
 
 };
 
 exports.showUserProductsPage = function (req, res) {
 
-    var User = mongoose.model('User');
-    var id = req.params.userId;
-    User.findOne({"_id" : id}, function(err, data){
-        console.log(id);
+    // console.log(req.params);
+    var artistID = req.params.userId;
 
-        // res.json(data);
-        if (err){
-            res.send("error man");
-        } else {
-            console.log(data);
+    var query = new Parse.Query(Artist);
+    query.get(artistID, {
+        success: function(artist){
+            console.log(artist);
+
             res.render('myproducts', {
-                user: data 
+                user: artist._serverData
             });
+
         }
-    });
-
-};
-
-
-exports.editProduct = function(req, res) {
-
-    res.header('content-type', 'text/html');
-    res.render('editProduct', {
-        user: data
     });
 
 };
