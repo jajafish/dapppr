@@ -21,10 +21,12 @@ exports.postUserName = function (req, res) {
     }, function(err, response, body){
 
         // console.log(body);
+        var artist = new Artist();
 
         var dribbbleUserResponse = JSON.parse(body);
         var dribbbleUserShots = dribbbleUserResponse.shots;
         var usersArtWorkURLs = [];
+        var quoteObjects = [];
 
         var PNGREGEX = /\.(png)\b/;
 
@@ -85,7 +87,7 @@ exports.postUserName = function (req, res) {
                         zip: "94107",
                         country: "US"
                         }
-                    }
+                    };
 
                     var quoteRequest         = require('request');
                     postQuote = function(quote){
@@ -98,18 +100,17 @@ exports.postUserName = function (req, res) {
                         body: quote
                       }, function (err, res, body) {
                         console.log("here is the quote response " +res.statusCode, body);
+                        quoteObjects.push(body.orderToken);
+
                       });
                      
                     };
                     postQuote(quote);
               });
             };
-
             postDesign(design);
 
         }
-
-          var artist = new Artist();
 
             artist.set('name', dribbbleUserShots[0].player.name);
             artist.set('userFollowers', dribbbleUserShots[0].player.followers_count);
@@ -118,15 +119,19 @@ exports.postUserName = function (req, res) {
             artist.set('avatar_url', dribbbleUserShots[0].player.avatar_url);
             artist.set('userArtWork', usersArtWorkURLs);
             artist.set('artistID', artist.id);
-            artist.save(null, {
-                success: function(artist) {
-                    var artistID = artist.id;
-                    // console.log(artistID);
-                    res.redirect('/' +artistID);
-                }, error: function(artist, error) {
-                    console.log(error.message);
-                }
-            });
+
+            setTimeout(function(){
+                artist.set('quotes', quoteObjects);
+                artist.save(null, {
+                    success: function(artist) {
+                        var artistID = artist.id;
+                        // console.log(artistID);
+                        res.redirect('/' +artistID);
+                    }, error: function(artist, error) {
+                        console.log(error.message);
+                    }
+                });
+            }, 5000);
 
         });
 
