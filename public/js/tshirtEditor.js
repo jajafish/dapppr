@@ -86,9 +86,7 @@ $(document).ready(function() {
 
     if ($('#save-product') >== 1){
       document.getElementById('save-product').onclick = function() {
-        alert('crazy');
                 saveProduct();
-        history.go(-1);
       };
     }
 
