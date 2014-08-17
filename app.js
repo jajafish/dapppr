@@ -47,14 +47,9 @@ app.get('/thanks', function(req, res){
 app.get('/:userId/edit', routes.editUserProductsPage);
 app.get('/:userId', routes.showUserProductsPage);
 
-
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);
-<<<<<<< HEAD
 app.get('/:userId', routes.showUserProductsPage);
-app.get('/:userId/:artworkId', routes.editProduct);
-=======
->>>>>>> 2c8f5a91e8764ccdd142381f77ebd80112786cac
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');

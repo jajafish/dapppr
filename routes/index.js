@@ -42,6 +42,41 @@ exports.postUserName = function (req, res) {
 
                 usersArtWorkURLs.push(shotObject);
             }
+            
+            console.log(usersArtWorkURLs);
+
+            var design = {
+              type: "dtg",
+              sides: {
+                front: {
+                  artwork: usersArtWorkURLs[i].image_url,
+                  dimensions: {width: 5}
+                }
+              }
+            };
+            
+
+
+            var request         = require('request');
+            postDesign = function(design){
+              request.post('https://api.scalablepress.com/v2/design', {
+                'auth': {
+                  'user': '',
+                  'pass': '2e93f7ea8b4dcd09a0e72df2a7ec0d70'
+                },
+                json: true,
+                body: design
+              }, function (err, res, body) {
+                console.log(res.statusCode, body);
+
+                    var arrayOfProductQuoteIDs = [];
+                    arrayOfProductQuoteIDs.push(body.designId);
+                    console.log("quote ids are " +arrayOfProductQuoteIDs);
+
+              });
+            };
+
+            postDesign(design);
 
         }
 
