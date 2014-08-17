@@ -85,23 +85,6 @@ $(document).ready(function() {
     });
 
 
-      document.getElementById('remove-selected').onclick = function() {
-            var activeObject = canvas.getActiveObject(),
-                activeGroup = canvas.getActiveGroup();
-            if (activeObject) {
-              canvas.remove(activeObject);
-              $("#text-string").val("");
-            }
-            else if (activeGroup) {
-              var objectsInGroup = activeGroup.getObjects();
-              canvas.discardActiveGroup();
-              objectsInGroup.forEach(function(object) {
-                canvas.remove(object);
-              });
-            }
-      };
-
-
     document.getElementById('save-product').onclick = function() {
 
       saveProduct();
