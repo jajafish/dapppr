@@ -34,6 +34,13 @@ app.use(bodyParser.json());
 app.set('port', 3000);
 server.listen(3000);
 
+app.get('/checkout', function(req, res){
+    res.render('checkout');
+});
+app.get('/thanks', function(req, res){
+    res.render('thanks');
+});
+
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);
 app.get('/:userId', routes.showUserProductsPage);
