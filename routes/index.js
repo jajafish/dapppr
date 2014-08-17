@@ -20,7 +20,7 @@ exports.postUserName = function (req, res) {
         maxRedirects: 10,
     }, function(err, response, body){
 
-        console.log(body);
+        // console.log(body);
 
         var dribbbleUserResponse = JSON.parse(body);
         var dribbbleUserShots = dribbbleUserResponse.shots;
@@ -57,7 +57,7 @@ exports.postUserName = function (req, res) {
             artist.save(null, {
                 success: function(artist) {
                     var artistID = artist.id;
-                    console.log(artistID);
+                    // console.log(artistID);
                     res.redirect('/' +artistID);
                 }, error: function(artist, error) {
                     console.log(error.message);
@@ -71,14 +71,16 @@ exports.postUserName = function (req, res) {
 
 exports.showUserProductsPage = function (req, res) {
 
-    console.log(req.params);
+    // console.log(req.params);
     var artistID = req.params.userId;
 
     var query = new Parse.Query(Artist);
     query.get(artistID, {
         success: function(artist){
+            console.log(artist);
+
             res.render('myproducts', {
-                user: artist
+                user: artist._serverData
             });
 
         }
