@@ -1,0 +1,10 @@
+{
+  "name": "base64js",
+  "version": "1.0.0",
+  "main": "base64.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}

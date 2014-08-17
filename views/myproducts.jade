@@ -2,6 +2,7 @@ extends layout
 
 block content
 
+
   section.header
 
   div.wrap
@@ -14,22 +15,22 @@ block content
         a(href='https://dribbble.com/#{username}') dribbble account
 
 
+
     a.alert 
       //- p Enjoy the example of your dapppr store? 
       //- .btn Activate Your Store Now.   
   
     section.products 
+
       div.grid
-        for png, index in user.shots 
+        for png, index in user.shots
           div(class='col-'+index)
             div.item-container
               img.prod_img.profile_center(src='#{png.image_url}')
 
   section.footer
     div.wrap-big
-      h1.dapppr_footer_title 
-        a(href="#") dapppr 
+      h1.dapppr_footer_title
+        a(href="#") dapppr
         span.about | about
-
-
 

@@ -23,6 +23,7 @@
     "express" : "4.x",
     "jade" : "*",
     "request" : "*",
-    "body-parser": "*"
+    "body-parser": "*",
+    "base64-js-codec": "1.0.0"
   }
 }
