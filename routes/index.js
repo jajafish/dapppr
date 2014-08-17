@@ -137,22 +137,33 @@ exports.showUserProductsPage = function (req, res) {
         'background_color': '#f4f4f4'
       }];
 
-      function randomizeColor(){
-        var result = Math.floor(Math.random() * ((19-0)+1) + 0);
-        return result;
-      }
-
     var query = new Parse.Query(Artist);
     query.get(artistID, {
         success: function(artist){
             console.log(artist);
-            console.log("HERE: "+ colors[randomizeColor()].background_color);
             res.render('myproducts', {
                 user: artist._serverData,
-                colorObject: colors
+                colorObject: colors,
             });
 
         }
     });
+
+};
+
+exports.showUserProductsPage = function (req, res) {
+
+  var artistID = req.params.userId;
+
+  var query = new Parse.Query(Artist);
+  query.get(artistID, {
+      success: function(artist){
+          console.log(artist);
+          res.render('editProduct', {
+              user: artist._serverData
+          });
+
+      }
+  });
 
 };

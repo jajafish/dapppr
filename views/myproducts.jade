@@ -6,8 +6,10 @@ block content
 
   div.wrap
     section.user_profile
-      img.likes_heart(src='img/dapppr-02.png')
-      img.user_pic.profile_center(src='#{user.avatar_url}')
+      img.likes_heart.settings-icon(src='img/dapppr-02.png')
+      a(href='/#{user._id}/#{user.userArtWork[0]}')
+        img.user_pic.profile_center(src='#{user.avatar_url}')
+
       h2.user_name.profile_center
         | #{user.name}
       h2.profile_center.likes_number #{user.userLikes}

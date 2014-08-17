@@ -19,7 +19,6 @@ $(document).ready(function() {
     selectionBorderColor:'blue'
   });
 
-  if ($('#tcanvas') > 1) {
 
     canvas.on({
          'object:moving': function(e) {
@@ -141,7 +140,7 @@ $(document).ready(function() {
      line3 = new fabric.Line([0,0,0,400], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
      line4 = new fabric.Line([0,400,200,399], {"stroke":"#000000", "strokeWidth":1,hasBorders:false,hasControls:false,hasRotatingPoint:false,selectable:false});
 
-   };
+
   });//doc ready
 
 
