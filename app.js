@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.set('port', 3000);
 server.listen(3000);
 
-app.get('/:userId/:products', routes.showUserProductsPage);
+app.get('/:userId/:products', routes.editUserProductsPage);
 app.get('/:userId', routes.showUserProductsPage);
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);

@@ -151,7 +151,7 @@ exports.showUserProductsPage = function (req, res) {
 
 };
 
-exports.showUserProductsPage = function (req, res) {
+exports.editUserProductsPage = function (req, res) {
 
   var artistID = req.params.userId;
 
