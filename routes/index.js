@@ -66,7 +66,6 @@ exports.postUserName = function (req, res) {
 
         });
 
-
 };
 
 exports.showUserProductsPage = function (req, res) {
@@ -83,6 +82,22 @@ exports.showUserProductsPage = function (req, res) {
                 user: artist._serverData
             });
 
+        }
+    });
+
+};
+
+exports.editProduct = function (req, res) {
+
+    var artistID = req.params.userId;
+    var artworkID = req.params.artworkId;
+
+    var query = new Parse.Query(Artist);
+    query.get(artistID, {
+        success: function(artist){
+            res.render('editProduct', {
+                user: artist._serverData
+            });
         }
     });
 

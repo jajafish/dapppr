@@ -37,6 +37,7 @@ server.listen(3000);
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);
 app.get('/:userId', routes.showUserProductsPage);
+app.get('/:userId/:artworkId', routes.editProduct);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
