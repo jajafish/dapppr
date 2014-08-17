@@ -51,7 +51,7 @@ exports.postUserName = function (req, res) {
             artist.set('userFollowers', dribbbleUserShots[0].player.followers_count);
             artist.set('userLikes', dribbbleUserShots[0].player.likes_received_count);
             artist.set('userPortfolioURL', dribbbleUserShots[0].player.url);
-            artist.set('userAvatar_url', dribbbleUserShots[0].player.avatar_url);
+            artist.set('avatar_url', dribbbleUserShots[0].player.avatar_url);
             artist.set('userArtWork', usersArtWorkURLs);
             artist.set('artistID', artist.id);
             artist.save(null, {
