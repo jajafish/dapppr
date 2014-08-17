@@ -91,6 +91,13 @@ exports.showUserProductsPage = function (req, res) {
             _id: obj_id
         }).toArray(function(err, docs){
             console.log(docs);
+
+            res.header('content-type', 'text/html');
+            res.render('myproducts', {
+                user: docs[0]
+
+            });
+
         });
 
     });

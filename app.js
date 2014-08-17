@@ -15,7 +15,7 @@ var express                 = require('express'),
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser());
 app.use(bodyParser.json());
-    
+
 mongo                   = require('mongodb'),
 mongoUSER = "johnnyJones:";
 mongoPASS = "pingpong1";
@@ -32,6 +32,9 @@ server.listen(3000);
 //     next();
 // });
 
+// SHOW USER PRODUCTS PAGE
+app.get('/:userId', routes.showUserProductsPage);
+
 // SIGNUP WITH DRIBBBLE ACCOUNT
 app.get('/', routes.signUpPage);
 
@@ -40,8 +43,7 @@ app.post('/', routes.postUserName);
 // EDIT SHIRT
 // app.get('/editShirt', routes.editProduct);
 
-// SHOW USER PRODUCTS PAGE
-app.get('/:userId', routes.showUserProductsPage);
+
 
 
 
