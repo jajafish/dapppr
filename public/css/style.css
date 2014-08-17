@@ -80,12 +80,76 @@ table {
 }
 
 
-body{
+
+
+
+/* make keyframes that tell the start state and the end state of our object */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+.fade-in {
+  opacity:0;  /* make things invisible upon start */
+  -webkit-animation:fadeIn ease-in 1;  /* call our keyframe named fadeIn, use animattion ease-in and repeat it only 1 time */
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;  /* this makes sure that after animation is done we remain at the last keyframe value (opacity: 1)*/
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+
+body.fade-in{
   font-family: "proxima-nova",'Helvetica', sans-serif;
   background: #f1f1f1;
   color:#333;
 }
 
+/*SIGN-UP*/
+.signup-wrap{
+  text-align: center;
+  margin:140px 40px 0px;
+
+}
+h1.sign-up-logo{
+  font-family: 'Pacifico', cursive;
+  font-size:9em;
+  -webkit-animation-delay: 0.7s;
+  -moz-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+h2.tagline{
+  font-size:3em;
+  margin-top:80px;
+  font: "proxima-nova-light",'Helvetica', sans-serif;
+}
+input[type=text]{
+    width: 74%;
+    min-width: 60%;
+    border: 1px solid #e1e1e1;
+    background: #fefefe;
+    color: #000;
+    font: .75em "proxima-nova",'Helvetica', sans-serif;
+    margin-top: 40px;
+    padding: 30px 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 0;
+    outline: 0;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    -o-transition: all .15s linear;
+    transition: all .15s linear;
+}
+span.dspan{color:green;}
+
+/*END SIGN-UP*/
 .header{
   background: rgba(0,0,0,.90);
   position:fixed;
@@ -138,16 +202,16 @@ body{
 
 .profile_center_link{
   display: block;
-  margin: 6px auto;
+  margin: 7px auto;
   text-align: center;
 }
 
 .profile_center_link a{
   text-decoration: none;
-  font-size: 1.25em;
+  font-size: 1.35em;
   font-family: 'Pacifico', cursive;
   letter-spacing: .03em;
-  color:rgba(0,0,0,.86);
+  color:rgba(0,0,0,.76);
   -webkit-transition: all .3s ease;
   -moz-transition: all .3s ease;
   -ms-transition: all .3s ease;
@@ -173,25 +237,16 @@ body{
 }
 
 
-.alert{
-      width: 60%;
-      height: auto;
-      text-align: center;
-      color: rgba(255,255,255,.8);
-      background: rgba(0,0,0,.6);
-      margin: 0 auto;
-      padding: 1em;
-      font-size: 1.25em;
-      line-height: 1.25em;
-      font-family: "proxima-nova-light",'Helvetica', sans-serif;
-      letter-spacing: .06em;
-    }
-
-
 .prod_img{
   max-height: 100%;
   max-width: 100%;
+  -webkit-transition: all 1s ease;
+     -moz-transition: all 1s ease;
+       -o-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+          transition: all 1s ease;
 }
+
 
 .product {
     max-width:64em;/* 1024px; */
@@ -240,7 +295,7 @@ body{
 
 .dapppr_footer_title a{
   text-decoration: none;
-  font-size: 1.25em;
+  font-size: 1.15em;
   font-family: 'Pacifico', cursive;
   letter-spacing: .03em;
   color:rgba(255,255,255,1.0);
@@ -250,13 +305,16 @@ body{
   -o-transition: all .3s ease;
   transition: all .3s ease;
 }
+
+
 .dapppr_footer_title a:hover{
   color:rgba(255,255,255,.86);
 }
 
+
 span.about{
   text-decoration: none;
-  font-size: 1em;
+  font-size: .85em;
   font-family: "proxima-nova",'Helvetica', sans-serif;
   color:rgba(255,255,255,1.0);
   -webkit-transition: all .3s ease;
@@ -266,6 +324,53 @@ span.about{
   transition: all .3s ease;}
 
 
+
+  button#remove-selected{
+    border: 4px solid rgba(0,0,0,0.6);
+    font-family: "proxima-nova",'Helvetica', sans-serif;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    color:rgba(0,0,0,0.7);
+    background: none;
+    padding: 25px 78px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:0 12px 10px 0;
+  }
+
+  button#remove-selected:hover{
+    border: 4px solid rgba(0,0,0,0.5);
+    color:rgba(255,255,255,0.9);
+    background:rgba(0,0,0,0.6);
+    cursor: pointer;
+  }
+
+  button#save-product{
+    border: 4px solid rgba(0,0,0,0.6);
+    font-family: "proxima-nova",'Helvetica', sans-serif;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    outline: none;
+    color:rgba(0,0,0,0.7);
+    background: none;
+    padding: 25px 94px;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    margin:0 0 10px 12px;
+  }
+
+  button#save-product:hover{
+    border: 4px solid rgba(0,0,0,0.5);
+    color:rgba(255,255,255,0.9);
+    background:rgba(0,0,0,0.6);
+    cursor: pointer;
+  }
+
 @media screen and (max-width: 50em) {
   .grid {
     overflow: hidden;
@@ -274,4 +379,35 @@ span.about{
     float: left;
     width: 100%;
   }
+
+  h1.sign-up-logo{
+  
+  font-size:7em;
 }
+
+h2.tagline{
+  font-size:2em;
+  margin-top:70px;
+}
+input[type=text]{
+    min-width: 340px;
+    border: 1px solid #e1e1e1;
+    background: #fefefe;
+    color: #000;
+    font: .75em "proxima-nova",'Helvetica', sans-serif;
+    margin-top: 40px;
+    padding: 30px 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border-radius: 0;
+    outline: 0;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    -o-transition: all .15s linear;
+    transition: all .15s linear;
+}
+}
+
+::selection {color:white;background:#f000ff;}
+::-moz-selection {color:white;background:#f000ff;}
