@@ -149,7 +149,7 @@ exports.showUserProductsPage = function (req, res) {
             console.log("HERE: "+ colors[randomizeColor()].background_color);
             res.render('myproducts', {
                 user: artist._serverData,
-                shirtColor: colors[randomizeColor()].background_color
+                colorObject: colors
             });
 
         }
