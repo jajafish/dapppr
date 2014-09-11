@@ -1,16 +1,13 @@
 var dribbbleAPI = require('../apiRequests/dribbbleService');
+var queue = require('queue-async');
 
 exports.signUpPage = function (req, res) {
-
     res.render('signup');
-
 };
 
 exports.postUserName = function (req, res) {
-
     var username = req.body.dribbbleUserName;
     console.log("from the dribbble service the username is " +username);
-
     var requestForUserInformation  = require('request');
     requestForUserInformation({
         uri: "http://api.dribbble.com/players/"+username+"/shots",
@@ -19,9 +16,6 @@ exports.postUserName = function (req, res) {
         followRedirect: true,
         maxRedirects: 10,
     }, function(err, response, body){
-
-        // console.log(body);
-
         var dribbbleUserResponse = JSON.parse(body);
         var dribbbleUserShots = dribbbleUserResponse.shots;
         var usersArtWorkURLs = [];
@@ -168,7 +162,20 @@ exports.editUserProductsPage = function (req, res) {
 
 exports.userSignsPetitionAndSignsUp = function(req, res) {
 
+  console.log("the req is ", req);
+  console.log("the body is ", req.body);
+
   var artistID = req.body.artistID;
+  console.log("the artistID is: " + artistID);
+
+  var artistPointer = {
+    __type: "Pointer",
+    className: "Artist",
+    objectId: artistID
+  };
+
+  console.log(artistPointer);
+
   var username = req.body.newUserEmail;
   var password = req.body.newUserPassword;
   console.log(username);
@@ -179,7 +186,7 @@ exports.userSignsPetitionAndSignsUp = function(req, res) {
     var user = new Parse.User();
     user.set("username", username);
     user.set("password", password);
-    user.set("artistID", artistID);
+    user.set("userArtist", artistPointer);
     user.signUp(null, {
       success: function(user){
 
@@ -195,23 +202,67 @@ exports.userSignsPetitionAndSignsUp = function(req, res) {
 
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 exports.dribbblePetition = function(req, res) {
 
-  var signedUsers = [];
   var query = new Parse.Query(Parse.User);
-  query.find({
-    success: function(users){
-      for (var i = 0; i < users.length; i++) {
-        var user = users[i]._serverData;
-        signedUsers.push(user);
+
+  function getArtistsUsers (cb) {
+    var signedUsers = [];
+    query.find({
+      success: function(users){
+        for (var i = 0; i < users.length; i++) {
+          var userName = users[i]._serverData.username;
+          var userArtistID = users[i]._serverData.artistID;
+
+          var artistQuery = new Parse.Query(Artist);
+          artistQuery.get(userArtistID, {
+              success: function(artist){
+                var artistAvatarURL = artist._serverData.avatar_url;
+                var artistName = artist._serverData.name;
+                var dribbbleArtist = {
+                  name: artistName,
+                  avatar: artistAvatarURL,
+                  email: userName
+                };
+                signedUsers.push(dribbbleArtist);
+              }
+          });
+        }
+
       }
-      console.log(signedUsers);
-      res.render('petitionSigners', {
-        users: signedUsers
-      });
-    }
-  });
 
 
+    });
+
+      cb(null, signedUsers);
+
+  }
+
+  queue()
+    .defer(getArtistsUsers)
+    .await(function(err, theUsers) {
+        res.render('petitionSigners', {
+          users: theUsers
+        });
+    });
 
 };

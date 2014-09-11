@@ -25,6 +25,7 @@
     "request" : "*",
     "body-parser": "*",
     "config" : "*",
-    "base64-js-codec": "1.0.0"
+    "base64-js-codec": "1.0.0",
+    "queue-async" : "1.0.7"
   }
 }

@@ -15,7 +15,6 @@ var express                 = require('express'),
 
 Parse = require('parse').Parse;
 Artist = Parse.Object.extend('Artist');
-
 Parse.initialize("1m5YuobBTxJaGyIS5TfdJPY0hWsNiRYKxR9x6XFy", "7qklAQq7GXWNspOc4ZSaS6a1ZPNMSF8CEijqgQL2");
 
 var query = new Parse.Query(Parse.User);
