@@ -5,10 +5,13 @@ block content
     h1(class="dribPetitionh1") Dear Dribbble,
     h2(class="dribPetitionh2") your users want to make Dapppr a reality:
 
-    for user in users
-        a(href="#{user.dribLink}")
-            h1 #{user.name}
-            img(src="#{user.avatar}")
 
+
+    div.grid
+        for user in users
+            a(href="#{user.dribLink}")
+                div.item-container
+                    h1(class="dribUserName") #{user.name}
+                    img(src="#{user.avatar}")
 
 

@@ -655,6 +655,10 @@ h2.dribPetitionh2 {
 
 }
 
+h1.dribUserName {
+  text-align: center;
+}
+
 
 
 ::selection {color:white;background:#f000ff;}
