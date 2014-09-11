@@ -44,12 +44,14 @@ block content
 
 
   section.petition
-    p We want you to earn money directly from your designs.
-    p We'll take care of everything else, from storefront hosting, to shirt printing and fulfillment.
-    p But first we need your help.Considering this is a commercial application, we need your support to convince Dribbble to let us go through with this. If this is something you believe you could benefit from, please sign up for our service and sign the petition to Dribbble. 
+    div.petition-wrap
+      h2.petition-header Petition to Dribbble
+      p We want you to earn money directly from your designs.
+      p We'll take care of everything else, from storefront hosting, to shirt printing and fulfillment.
+      p But first we need your help.Considering this is a commercial application, we need your support to convince Dribbble to let us go through with this. If this is something you believe you could benefit from, please sign up for our service and sign the petition to Dribbble. 
 
     form(method="post", action="/userSignUpForPetition", class="secondSignupForm")
         input(type="text", name="artistID", value="#{userID}", class="formInputToHide")
-        input(type="text", name="newUserEmail", placeholder="email", onfocus="this.placeholder = ''", onblur="this.placeholder = 'email'", class="signupForSiteForm")
-        input(type="password", name="newUserPassword", placeholder="password", onfocus="this.placeholder = ''", onblur="this.placeholder = 'password'", class="signupForSiteForm")
-        input(type="password", name="newUserPasswordConfirm", placeholder="confirm password", onfocus="this.placeholder = ''", onblur="this.placeholder = 'confirm password'", class="signupForSiteForm")
+        input(type="text", name="newUserEmail", placeholder="Email", onfocus="this.placeholder = ''", onblur="this.placeholder = 'Email'", class="signupForSiteForm")
+        input(type="password", name="newUserPassword", placeholder="Password", onfocus="this.placeholder = ''", onblur="this.placeholder = 'Password'", class="signupForSiteForm")
+        input(type="password", name="newUserPasswordConfirm", placeholder="Confirm Password", onfocus="this.placeholder = ''", onblur="this.placeholder = 'Confirm Password'", class="signupForSiteForm")

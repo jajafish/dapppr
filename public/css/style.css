@@ -186,29 +186,9 @@ table {
 
 
 
-
-
-
 .signupForSiteForm {
   font-size: 30px;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* make keyframes that tell the start state and the end state of our object */
@@ -240,11 +220,11 @@ body.fade-in{
 /*SIGN-UP*/
 .signup-wrap{
   text-align: center;
-  margin:140px 40px 0px;
+  margin:140px 40px 180px;
 
 }
 h1.sign-up-logo{
-  font-family: 'Pacifico', cursive;
+  font-family:'Pacifico', cursive;
   font-size:9em;
   -webkit-animation-delay: 0.7s;
   -moz-animation-delay: 0.7s;
@@ -254,21 +234,23 @@ h1.sign-up-logo{
 h2.tagline{
   font-size:3em;
   margin-top:80px;
-  font: "proxima-nova-light",'Helvetica', sans-serif;
+  font: 'Archer', "proxima-nova-light",'Helvetica', sans-serif;
 }
+
 input[type=text], input[type=password]{
-    width: 74%;
     min-width: 60%;
     border: 1px solid #e1e1e1;
     background: #fefefe;
     color: #000;
-    font: .75em "proxima-nova",'Helvetica', sans-serif;
+    font: .7em "proxima-nova",'Helvetica', sans-serif;
     margin-top: 40px;
     padding: 30px 18px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    border-radius: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     outline: 0;
     -webkit-transition: all .15s linear;
     -moz-transition: all .15s linear;
@@ -574,10 +556,10 @@ h2.tagline{
   font-size:2em;
   margin-top:70px;
 }
-input[type=text]{
+/*input[type=text]{
     min-width: 340px;
     border: 1px solid #e1e1e1;
-    background: #fefefe;
+    background: #f1f1f1;
     color: #000;
     font: .75em "proxima-nova",'Helvetica', sans-serif;
     margin-top: 40px;
@@ -591,7 +573,29 @@ input[type=text]{
     -moz-transition: all .15s linear;
     -o-transition: all .15s linear;
     transition: all .15s linear;
+}*/
 }
+.secondSignupForm input[type=text]{
+  font: 2em "proxima-nova",'Helvetica', sans-serif;
+  background: #f1f1f1;
+  -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    -o-transition: all .15s linear;
+    transition: all .15s linear;
+}
+.secondSignupForm input[type=password]{
+    font: 2em "proxima-nova",'Helvetica', sans-serif;
+    background: #f1f1f1;
+  -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    -o-transition: all .15s linear;
+    transition: all .15s linear;
+}
+input[type=text]:focus{
+    background-color: #fff;
+}
+input[type=password]:focus{
+    background-color: #fff;
 }
 
 .wrap-checkout{
@@ -605,6 +609,7 @@ form.checkout input[type=text]{
   margin-top:12px;
   font: 1.25em "proxima-nova",'Helvetica', sans-serif;
 }
+
 
 h1.checkout{
   margin-top:40px;
@@ -645,3 +650,37 @@ h1.thanks{
 
 ::selection {color:white;background:#f000ff;}
 ::-moz-selection {color:white;background:#f000ff;}
+
+
+section.petition{
+    background-color: #fff;
+    margin-top:60px;
+    padding-bottom:120px;
+  }
+
+div.petition-wrap{
+    max-width: 45em;
+    margin: 0 auto;
+    padding:80px 0 20px 0;
+}
+
+.petition-header{
+    font-size:2em;
+    text-transform: uppercase;
+    margin-bottom:32px;
+    font-family: "Archer-Bold";
+    letter-spacing: 1px;
+
+}
+section.petition p{
+  font-size: 1.35em;
+  line-height: 1.5em;
+}
+
+
+div.footer{
+  background: rgba(0,0,0,.90);
+  height: 40px;
+}
+
+
