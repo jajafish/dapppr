@@ -188,6 +188,29 @@ table {
 
 
 
+
+.signupForSiteForm {
+  font-size: 30px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* make keyframes that tell the start state and the end state of our object */
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -233,7 +256,7 @@ h2.tagline{
   margin-top:80px;
   font: "proxima-nova-light",'Helvetica', sans-serif;
 }
-input[type=text]{
+input[type=text], input[type=password]{
     width: 74%;
     min-width: 60%;
     border: 1px solid #e1e1e1;
@@ -341,6 +364,11 @@ span.dspan{color:green;}
   -webkit-border-radius: 50%;
      -moz-border-radius: 50%;
           border-radius: 50%;
+}
+
+
+.secondSignupForm, .petition {
+  text-align: center;
 }
 
 
