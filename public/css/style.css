@@ -642,6 +642,20 @@ h1.thanks{
   margin:140px auto;
 }
 
+h1.dribPetitionh1 {
+  font-size: 90px;
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+
+}
+
+h2.dribPetitionh2 {
+  font-size: 40px;
+  text-align: center;
+
+}
+
+
 
 ::selection {color:white;background:#f000ff;}
 ::-moz-selection {color:white;background:#f000ff;}
