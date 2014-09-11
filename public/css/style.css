@@ -254,6 +254,13 @@ input[type=text]{
 }
 span.dspan{color:green;}
 
+
+.formInputToHide {
+  display: none;
+}
+
+
+
 /*END SIGN-UP*/
 .header{
   background: rgba(0,0,0,.90);

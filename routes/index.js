@@ -39,14 +39,11 @@ exports.postUserName = function (req, res) {
                     image_url: dribbbleUserShots[i].image_url,
                     likes: dribbbleUserShots[i].likes_count
                 };
-
                 usersArtWorkURLs.push(shotObject);
             }
-
         }
 
           var artist = new Artist();
-
             artist.set('name', dribbbleUserShots[0].player.name);
             artist.set('userFollowers', dribbbleUserShots[0].player.followers_count);
             artist.set('userLikes', dribbbleUserShots[0].player.likes_received_count);
@@ -166,5 +163,34 @@ exports.editUserProductsPage = function (req, res) {
 
       }
   });
+
+};
+
+exports.userSignsPetitionAndSignsUp = function(req, res) {
+
+  var artistID = req.body.artistID;
+  var username = req.body.newUserEmail;
+  var password = req.body.newUserPassword;
+  console.log(username);
+
+  console.log('signing up user');
+
+  if (req.newUserPassword == req.newUserPasswordConfirm) {
+    var user = new Parse.User();
+    user.set("username", username);
+    user.set("password", password);
+    user.set("artistID", artistID);
+    user.signUp(null, {
+      success: function(user){
+
+      },
+      error: function(user, error){
+        console.log("error: " + error.code + " " + error.message);
+      }
+    });
+
+  } else {
+    console.log("passwords must match");
+  }
 
 };
