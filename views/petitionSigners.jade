@@ -1,0 +1,9 @@
+extends layout
+
+block content
+
+    h1 Dear Dribbble,
+    h2 the following users want to make this product a reality:
+
+    for user in users
+        h1 #{user.username}

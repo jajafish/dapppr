@@ -194,3 +194,24 @@ exports.userSignsPetitionAndSignsUp = function(req, res) {
   }
 
 };
+
+exports.dribbblePetition = function(req, res) {
+
+  var signedUsers = [];
+  var query = new Parse.Query(Parse.User);
+  query.find({
+    success: function(users){
+      for (var i = 0; i < users.length; i++) {
+        var user = users[i]._serverData;
+        signedUsers.push(user);
+      }
+      console.log(signedUsers);
+      res.render('petitionSigners', {
+        users: signedUsers
+      });
+    }
+  });
+
+
+
+};
