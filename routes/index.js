@@ -224,45 +224,47 @@ exports.userSignsPetitionAndSignsUp = function(req, res) {
 exports.dribbblePetition = function(req, res) {
 
   var query = new Parse.Query(Parse.User);
+  var artist = new Parse.Query(Artist);
 
-  function getArtistsUsers (cb) {
-    var signedUsers = [];
+  var artistUsers = [];
+
+  var setArtistUsers = function(callback){
     query.find({
       success: function(users){
-        for (var i = 0; i < users.length; i++) {
-          var userName = users[i]._serverData.username;
-          var userArtistID = users[i]._serverData.artistID;
+        for (var i = 0; i < users.length; ++i) {
 
-          var artistQuery = new Parse.Query(Artist);
-          artistQuery.get(userArtistID, {
-              success: function(artist){
-                var artistAvatarURL = artist._serverData.avatar_url;
-                var artistName = artist._serverData.name;
-                var dribbbleArtist = {
-                  name: artistName,
-                  avatar: artistAvatarURL,
-                  email: userName
-                };
-                signedUsers.push(dribbbleArtist);
-              }
-          });
+          var myPointerObject = users[i].get("userArtist");
+          console.log('get name ', myPointerObject.id);
+          getArtistInfo(myPointerObject.id, callback);
         }
+        // gatherArtistUsers(callback); 
+      }
+    });
+  };
+
+  var getArtistInfo = function(artistId, callback){
+    artist.get(artistId, {
+      success: function(artist){
+        console.log('artist name is: ', artist._serverData.name);
+        artistUsers.push(artist._serverData.name);
+        gatherArtistUsers(callback); 
 
       }
-
-
     });
-
-      cb(null, signedUsers);
-
   }
 
+  var gatherArtistUsers = function(callback){
+    console.log("INSIDE CALLBACK")
+    if(callback) callback(null, artistUsers);
+  };
+
+
   queue()
-    .defer(getArtistsUsers)
-    .await(function(err, theUsers) {
-        res.render('petitionSigners', {
-          users: theUsers
-        });
+  .defer(setArtistUsers)
+  .await(function(err, getArtistUsers) {
+    res.render('petitionSigners', {
+      users: getArtistUsers
     });
+  });
 
 };
