@@ -44,10 +44,10 @@ app.get('/checkout', function(req, res){
 app.get('/thanks', function(req, res){
     res.render('thanks');
 });
+
 app.get('/:userId/edit', routes.editUserProductsPage);
 app.get('/:userId', routes.showUserProductsPage);
-
-
+app.post('/userSignUpForPetition', routes.userSignsPetitionAndSignsUp);
 app.get('/', routes.signUpPage);
 app.post('/', routes.postUserName);
 

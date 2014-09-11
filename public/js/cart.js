@@ -1,32 +1,8 @@
-$(document).ready(function() {
-
-
-  $('#loader-container').css('display', 'block');
-
- $(window).load(function() {
+$(window).load(function() {
 
    $('#loader-container').css('display', 'none');
 
-
  });
-
-$('.size-container').on('click', function() {
-
-  if ($(this).html() === "ADDED"){
-    if($(this).hasClass('medium')){
-      $(this).html('medium');
-    }else if($(this).hasClass('large')){
-      $(this).html('large');
-    }else {
-      $(this).html('small');
-    }
-  } else {
-    $(this).html('ADDED');
-  }
-  document.location.href = '../checkout';
-
-});
-
 
 $('.settings-icon').on('click', function() {
   var imgSrcVal = $("img.prod_img").attr("src");
@@ -34,25 +10,3 @@ $('.settings-icon').on('click', function() {
   window.location = 'localhost:3000/'+imgSrcVal;
 });
 
-
-
-
-
-
-// $('.shirt-items').on('hover', function(){
-//   $(this).css('opacity', '0.7');
-// });
-//
-// $('.item-container').on('hover', function(){
-//   $('.size-container').css('opacity', '1');
-//   $('this .shirt-items').css('opacity', '1');
-//   $(this).css('opacity', '1');
-// });
-
-
-
-
-
-
-
-});
