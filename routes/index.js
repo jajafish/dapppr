@@ -246,7 +246,14 @@ exports.dribbblePetition = function(req, res) {
     artist.get(artistId, {
       success: function(artist){
         console.log('artist name is: ', artist._serverData.name);
-        artistUsers.push(artist._serverData.name);
+
+        var artistObject = {
+          name: artist._serverData.name,
+          avatar: artist._serverData.avatar_url,
+          dribLink: artist._serverData.userPortfolioURL
+        };
+
+        artistUsers.push(artistObject);
         gatherArtistUsers(callback); 
 
       }
@@ -257,7 +264,6 @@ exports.dribbblePetition = function(req, res) {
     console.log("INSIDE CALLBACK")
     if(callback) callback(null, artistUsers);
   };
-
 
   queue()
   .defer(setArtistUsers)
