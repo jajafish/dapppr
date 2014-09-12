@@ -1,3 +1,9 @@
+/*General Styles */
+a:visited { text-decoration: none; color:#333; }
+a:focus { text-decoration: none; color:#333; }
+a:hover, a:active { text-decoration: none; color: #ea4c89 }
+
+
 .well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);-moz-box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);box-shadow:inset 0 1px 1px rgba(0, 0, 0, 0.05);}.well blockquote{border-color:#ddd;border-color:rgba(0, 0, 0, 0.15);}
 
 .img-polaroid {
@@ -186,29 +192,9 @@ table {
 
 
 
-
-
-
 .signupForSiteForm {
   font-size: 30px;
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* make keyframes that tell the start state and the end state of our object */
@@ -240,11 +226,11 @@ body.fade-in{
 /*SIGN-UP*/
 .signup-wrap{
   text-align: center;
-  margin:140px 40px 0px;
+  margin:140px 40px 180px;
 
 }
 h1.sign-up-logo{
-  font-family: 'Pacifico', cursive;
+  font-family:'Pacifico', cursive;
   font-size:9em;
   -webkit-animation-delay: 0.7s;
   -moz-animation-delay: 0.7s;
@@ -254,21 +240,23 @@ h1.sign-up-logo{
 h2.tagline{
   font-size:3em;
   margin-top:80px;
-  font: "proxima-nova-light",'Helvetica', sans-serif;
+  font: 'Archer', "proxima-nova-light",'Helvetica', sans-serif;
 }
-input[type=text], input[type=password]{
-    width: 74%;
+
+input[type=text], input[type=password], input[type=submit]{
     min-width: 60%;
     border: 1px solid #e1e1e1;
     background: #fefefe;
     color: #000;
-    font: .75em "proxima-nova",'Helvetica', sans-serif;
+    font: .7em "proxima-nova",'Helvetica', sans-serif;
     margin-top: 40px;
     padding: 30px 18px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    border-radius: 0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     outline: 0;
     -webkit-transition: all .15s linear;
     -moz-transition: all .15s linear;
@@ -327,6 +315,7 @@ span.dspan{color:green;}
   width: 100%;
   position: relative;
   margin: 2em 0;
+  display: block;
 }
 
 .profile_center{
@@ -336,28 +325,18 @@ span.dspan{color:green;}
   overflow:hidden;
 }
 
-.profile_center_link{
-  display: block;
-  margin: 7px auto;
-  text-align: center;
+.profile_center_inline{
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: center;
 }
 
-.profile_center_link a{
+.likes_number{
+  margin-bottom: 7px;
+  margin-left: 5px;
   text-decoration: none;
-  font-size: 1.35em;
-  font-family: 'Pacifico', cursive;
-  letter-spacing: .03em;
-  color:rgba(0,0,0,.76);
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -ms-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
 }
 
-.profile_center_link a:hover{
-  color:rgba(0,0,0,.66);
-}
 .user_pic{
   height: 142px;
   width: 142px;
@@ -492,11 +471,9 @@ span.dspan{color:green;}
   transition: all .3s ease;
 }
 
-
 .dapppr_footer_title a:hover{
   color:rgba(255,255,255,.86);
 }
-
 
 span.about{
   text-decoration: none;
@@ -508,8 +485,6 @@ span.about{
   -ms-transition: all .3s ease;
   -o-transition: all .3s ease;
   transition: all .3s ease;}
-
-
 
   button#remove-selected{
     border: 4px solid rgba(0,0,0,0.6);
@@ -568,31 +543,155 @@ span.about{
 
   h1.sign-up-logo{
   font-size:7em;
+  }
+
+  h2.tagline{
+    font-size:2em;
+    margin-top:70px;
+  }
+
+  input[type=text]{
+      min-width: 340px;
+      border: 1px solid #e1e1e1;
+      background: #f1f1f1;
+      color: #000;
+      font: .75em "proxima-nova",'Helvetica', sans-serif;
+      margin-top: 40px;
+      padding: 30px, 18px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      border-radius: 0;
+      outline: 0;
+      -webkit-transition: all .15s linear;
+      -moz-transition: all .15s linear;
+      -o-transition: all .15s linear;
+      transition: all .15s linear;
+  }
 }
 
-h2.tagline{
-  font-size:2em;
-  margin-top:70px;
+/************************** form animation */
+.secondSignupForm {
+ position: relative;  
 }
-input[type=text]{
-    min-width: 340px;
-    border: 1px solid #e1e1e1;
-    background: #fefefe;
-    color: #000;
-    font: .75em "proxima-nova",'Helvetica', sans-serif;
-    margin-top: 40px;
-    padding: 30px, 18px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    border-radius: 0;
-    outline: 0;
+
+.lastInputOnForm .formLoading{
+  /* loading bar */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3%;
+  width: 100%;
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+  visibility: hidden;
+  transition: transform 3s;
+}
+
+.lastInputOnForm {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transition: bottom 0.3s, background-color 0.3s;
+  z-index: 1; 
+}
+
+
+.is-active .lastInputOnForm {
+  margin-right: 15%;
+  min-width: 45%
+  
+}
+
+.input-submit {
+  /* hidden by default */
+  display: none;
+  z-index: 2;
+  cursor: pointer;
+  background-color: #444d65;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  /* hidden by default */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  margin-left: -15%;
+  position: absolute;
+}
+
+input[type=submit] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  min-width: 15%;
+  max-width: 29%;
+  padding: 42px 18px 42px 18px;
+
+}
+
+.is-active .input-submit, .is-active input[type=submit] {
+  display: inline-block;
+  animation: cd-bounce-in ease-out 2.4s;
+}
+
+@keyframes cd-bounce-in {
+  0% {
+    margin-left: -5%;
+    min-width: 0%;
+  }
+ 
+  60% {
+    margin-left: -10%;
+    min-width: 8%;
+  }
+ 
+  100% {
+    margin-left: -15%;
+    min-width: 15%;
+  }
+}
+
+/*
+.groupedSubmission{
+  display: inline-block;
+}
+
+.secondSignupForm .userPassword{
+ display: inherit; 
+}
+*/
+
+
+.secondSignupForm input[type=text]{
+  font: 2em "proxima-nova",'Helvetica', sans-serif;
+  background: #f1f1f1;
+  -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    -o-transition: all .15s linear;
+    transition: all .15s linear;
+}
+.secondSignupForm input[type=password]{
+    font: 2em "proxima-nova",'Helvetica', sans-serif;
+    background: #f1f1f1;
     -webkit-transition: all .15s linear;
     -moz-transition: all .15s linear;
     -o-transition: all .15s linear;
     transition: all .15s linear;
 }
+input[type=text]:focus{
+    background-color: #fff;
 }
+input[type=password]:focus{
+    background-color: #fff;
+}
+
+/************************** form animation  END*/
+
 
 .wrap-checkout{
   text-align: center;
@@ -605,6 +704,7 @@ form.checkout input[type=text]{
   margin-top:12px;
   font: 1.25em "proxima-nova",'Helvetica', sans-serif;
 }
+
 
 h1.checkout{
   margin-top:40px;
@@ -655,7 +755,37 @@ h2.dribPetitionh2 {
 
 }
 
-
-
 ::selection {color:white;background:#f000ff;}
 ::-moz-selection {color:white;background:#f000ff;}
+
+section.petition{
+    background-color: #fff;
+    margin-top:60px;
+    padding-bottom:120px;
+  }
+
+div.petition-wrap{
+    max-width: 45em;
+    margin: 0 auto;
+    padding:80px 0 20px 0;
+}
+
+.petition-header{
+    font-size:2em;
+    text-transform: uppercase;
+    margin-bottom:32px;
+    font-family: "Archer-Bold";
+    letter-spacing: 1px;
+
+}
+section.petition p{
+  font-size: 1.35em;
+  line-height: 1.5em;
+}
+
+div.footer{
+  background: rgba(0,0,0,.90);
+  height: 40px;
+}
+
+

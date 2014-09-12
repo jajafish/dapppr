@@ -11,6 +11,9 @@ var express                 = require('express'),
     fs                      = require('fs'),
     util                    = require('util'),
     mime                    = require('mime');
+    sass                    = require("node-sass");
+    path                    = require('path');
+
 
 
 Parse = require('parse').Parse;
@@ -24,6 +27,11 @@ app.use(function(req, res, next){
   console.log('%s %s', req.method, req.url);
   next();
 });
+app.use(sass.middleware({
+    src: '/css',
+    dest: path.join(__dirname, 'public'),
+    debug: true
+}));
 
 app.set('port', 3000);
 server.listen(3000);
