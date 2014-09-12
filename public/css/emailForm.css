@@ -1,0 +1,336 @@
+*, *:after, *:before {
+	@include box-sizing(border-box);
+}
+
+
+input[type=email]::-ms-clear {
+	/* remove the big X on ie */
+    display: none;
+}
+
+
+/* -------------------------------- 
+
+Modules - reusable parts of our design
+
+-------------------------------- */
+
+.cd-container { /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+	width: 90%;
+	max-width: 768px;
+	margin: 0 auto;
+}
+
+/* -------------------------------- 
+
+Main components 
+
+-------------------------------- */
+
+
+/* filter */
+
+.cd-filter {
+  text-align: center;
+}
+
+.cd-filter	li {
+  display: inline-block;
+  margin: 0 .6em;
+}
+
+.cd-filter	input[type=radio] {
+  display: none;
+}
+
+.cd-filter label {
+  display: block;
+  cursor: pointer;
+  padding: .6em;
+  @include border-radius;
+  color: rgba(#444d65, .4);
+}
+
+.cd-filter input:checked + label {
+  box-shadow: 0 0 0 1px rgba(cdb#444d65efm4 ,, .4);
+  color: #444d65;
+}
+
+
+/* form */
+
+.cd-form-wrapper {
+  position: relative;
+  margin: .8em auto;
+}
+
+.cd-form {
+	position: relative;
+	width: 100%;
+	height: 100px;
+	background: transparent;
+}
+.cd-form .cd-loading {
+    /* loading bar */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3%;
+    width: 100%;
+    background-color: lighten($color-2, 25%);
+
+    @include transform-origin(0 50%);
+    @include transform(scaleX(0));
+    visibility: hidden;
+    -webkit-transition: -webkit-transform 3s;
+    -moz-transition: -moz-transform 3s;
+    transition: transform 3s;
+    z-index: 3;
+}
+
+.cd-form .no-csstransitions & {
+    /* we use modernizr to detect old browser and hide the loading effect */
+    display: none;
+}
+
+.cd-form &.is-submitted .cd-loading{
+    visibility: visible;
+    -ms-transform: scaleX(1); /* IE 9 */
+    -webkit-transform: scaleX(1); /* Chrome, Safari, Opera */
+    transform: scaleX(1);
+}
+
+
+.cd-label, .cd-email, .cd-submit {
+	position: absolute;
+}
+
+.cd-label {
+	color: darken($color-1, 50%);
+	left: 18px;
+	top: 20%;
+	text-transform: uppercase;
+	@include font-size(11px);
+	font-weight: 700;
+	opacity: 1;
+    -ms-transform: translate3d(0,0,0); /* IE 9 */
+    -webkit-transform: translate3d(0,0,0); /* Chrome, Safari, Opera */
+    transform: translate3d(0,0,0);
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	z-index: 2;
+}
+
+.is-active .cd-label {
+    opacity: 0;
+    -ms-transform: translate3d(0,-200%,0); /* IE 9 */
+    -webkit-transform: translate3d(0,-200%,0); /* Chrome, Safari, Opera */
+    transform: translate3d(0,-200%,0);
+}
+
+.cd-email, .cd-submit {
+	width: 100%;
+	bottom: 0;
+    border: none;
+}
+
+.cd-email:focus, .cd-submit:focus {
+  outline: none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  border: none;
+}
+
+.cd-email {
+	top: 0;
+	left: 0;
+	height: 100%;
+	background: transparent;
+	padding-left: 18px;
+	font-weight: 300;
+	color: #444d65;
+    -webkit-transition: height .3s, background-color .3s; /* For Safari 3.1 to 6.0 */
+    transition: height .3s, background-color .3s;
+	z-index: 1;
+
+}
+.is-active .cd-email {
+  height: 50%;
+}
+
+.cd-email:focus {
+    background-color: lighten(#f3cb6d, 5%);
+}
+
+.cd-submit {
+    margin-bottom: -1%;
+	top: 50%;
+    padding: 0;
+    border: 0;
+	cursor: pointer;
+	background-color: #444d65;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	/* hidden by default */
+	display: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-transition: background-color .2s; /* For Safari 3.1 to 6.0 */
+    transition: background-color .2s;
+	z-index: 2;
+}
+.is-active .cd-submit {
+  display: block;
+  -webkit-animation: cd-bounce-in ease-out .4s; /* Chrome, Safari, Opera */
+  animation: cd-bounce-in ease-out .4s;
+}
+
+input::-webkit-input-placeholder{
+  text-align: center;
+}
+
+input::-moz-placeholder {
+  text-align: center;
+}
+
+input:-moz-placeholder {
+  text-align: center;
+}
+
+input:-ms-input-placeholder{
+  text-align: center;
+}
+
+.cd-submit .no-touch &:hover, &:focus {
+		background-color: lighten(#444d65, 5%);
+}
+
+@-webkit-keyframes cd-bounce-in {
+	0% {
+		top: 100%;
+	}
+
+	60% {
+		top: 45%;
+	}
+
+	100% {
+		top: 50%;
+	}
+}
+
+.cd-response {
+  position: absolute;
+  bottom: 110%;
+  left: 0;
+  padding: 1.4em;
+  color:#fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  z-index: 3;
+
+  /* hidden by default */
+  visibility: hidden;
+  opacity: 0;
+  -ms-transform: translateY(-20px); /* IE 9 */
+  -webkit-transform: translateY(-20px); /* Chrome, Safari, Opera */
+  transform: translateY(-20px);
+  -webkit-transition: -webkit-transform 0.3s 0s, opacity 0.3s 0s, visibility 0s .3s;
+  -moz-transition: -moz-transform 0.3s 0s, opacity 0.3s 0s, visibility 0s .3s;
+  transition: transform 0.3s 0s, opacity 0.3s 0s, visibility 0s .3s;
+}
+.cd-response &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 20px;
+
+    /* create triangle in css */
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+}
+
+.cd-response &.cd-response-error {
+  background-color: #e36767;
+}
+
+.cd-response &::after {
+      border-top-color: #e36767;
+}
+
+
+.cd-response &.cd-response-notification {
+  background-color: lighten(#444d65, 25%);
+}
+.cd-response &::after {
+  border-top-color: lighten(#444d65, 25%);
+}
+
+
+.cd-response &.is-visible {
+  visibility: visible;
+  opacity: 1;
+  -ms-transform: translateY(0); /* IE 9 */
+  -webkit-transform: translateY(0); /* Chrome, Safari, Opera */
+  transform: translateY(0);
+  -webkit-transition: -webkit-transform 0.3s 0s, opacity 0.3s 0s, visibility 0s 0s;
+  -moz-transition: -moz-transform 0.3s 0s, opacity 0.3s 0s, visibility 0s 0s;
+  transition: transform 0.3s 0s, opacity 0.3s 0s, visibility 0s 0s;
+}
+
+.cd-response-success {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 50%;
+	width: 100%;
+	background-color: $color-5;
+    -ms-transform-origin: 50% 100%; /* IE 9 */
+    -webkit-transform-origin: 50% 100%; /* Chrome, Safari, Opera */
+    transform-origin: 50% 100%;
+    -ms-transform: translateY(0); /* IE 9 */
+    -webkit-transform: translateY(0); /* Chrome, Safari, Opera */
+    transform: translateY(0);
+	visibility: hidden;
+	-webkit-transition: -webkit-transform .3s 0s, visibility 0s .3s;
+	-moz-transition: -moz-transform .3s 0s, visibility 0s .3s;
+	transition: transform .3s 0s, visibility 0s .3s;
+	z-index: 3;
+}
+.cd-response-success 	p {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  @include center;
+  color: #fff;
+  opacity: 0;
+  -webkit-transition: opacity .3s 0s;
+  -moz-transition: opacity .3s 0s;
+  -ms-transition: opacity .3s 0s;
+  -o-transition: opacity .3s 0s;
+  transition: opacity .3s 0s;
+}
+
+.cd-response-success &.slide-in {
+  visibility: visible;
+  -ms-transform: translateY(1); /* IE 9 */
+  -webkit-transform: translateY(1); /* Chrome, Safari, Opera */
+  transform: translateY(1);
+
+  -webkit-transition: -webkit-transform .3s 0s, visibility 0s 0s;
+  -moz-transition: -moz-transform .3s 0s, visibility 0s 0s;
+  transition: transform .3s 0s, visibility 0s 0s;
+}
+
+.cd-response-success &.slide-in	p {
+  opacity: 1;
+  -webkit-transition: opacity .3s .3s;
+  -moz-transition: opacity .3s .3s;
+  -ms-transition: opacity .3s .3s;
+  -o-transition: opacity .3s .3s;
+  transition: opacity .3s .3s;
+}

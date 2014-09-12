@@ -128,52 +128,6 @@ a:hover, a:active { text-decoration: none; color: #ea4c89 }
 
  }
 
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol, ul {
-  list-style: none;
-}
-blockquote, q {
-  quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 @font-face {
   font-family: 'proxima-nova';
   src: url('../fonts/proximanova-regular-webfont.eot');
@@ -224,7 +178,7 @@ body.fade-in{
 
 /*SIGN-UP*/
 
-input[type=text], input[type=password], input[type=submit]{
+.secondSignupForm input[type=text], .secondSignupForm input[type=password]{
     min-width: 60%;
     border: 1px solid #e1e1e1;
     background: #fefefe;
@@ -601,6 +555,27 @@ span.about{
   }
 }
 
+.groupedSubmission input[type=submit] {
+    min-width: 60%;
+    border: 1px solid #e1e1e1;
+    background: #fefefe;
+    color: #000;
+    font: .7em "proxima-nova",'Helvetica', sans-serif;
+    margin-top: 40px;
+    padding: 30px 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    outline: 0;
+    -webkit-transition: all .15s linear;
+    -moz-transition: all .15s linear;
+    -o-transition: all .15s linear;
+    transition: all .15s linear;
+}
+
 .input-submit {
   /* hidden by default */
   display: none;
@@ -620,7 +595,7 @@ span.about{
   position: absolute;
 }
 
-input[type=submit] {
+.groupedSubmission input[type=submit] {
   -webkit-appearance: none;
   -moz-appearance: none;
   -ms-appearance: none;
@@ -637,7 +612,7 @@ input[type=submit] {
   border-top-left-radius: 0;
 }
 
-.is-active input[type=submit] {
+.is-active groupedSubmission input[type=submit] {
   animation: submit-enlarge cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.4s;
 }
 
