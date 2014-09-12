@@ -1,9 +1,8 @@
 extends layout
 
 block content
-	div.signup-wrap
-		h1.sign-up-logo dapppr. 
-		h2.tagline Turn your dribbble account into a store.  
-			form(method="post", action="/")
-				input(type="text", name="dribbbleUserName", placeholder="Enter a dribbble username", onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter a dribbble username'")
-					
+  div.signup-wrap
+    div.vertical-center
+      h1.sign-up-logo dapppr
+        form(method="post", action="/")
+            input(type="text", name="dribbbleUserName", placeholder="Enter your dribbble username to create a t-shirt store.", onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter your dribbble username to create a t-shirt store.'")

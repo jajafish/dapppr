@@ -191,7 +191,6 @@ table {
 }
 
 
-
 .signupForSiteForm {
   font-size: 30px;
 }
@@ -224,24 +223,6 @@ body.fade-in{
 }
 
 /*SIGN-UP*/
-.signup-wrap{
-  text-align: center;
-  margin:140px 40px 180px;
-
-}
-h1.sign-up-logo{
-  font-family:'Pacifico', cursive;
-  font-size:9em;
-  -webkit-animation-delay: 0.7s;
-  -moz-animation-delay: 0.7s;
-  animation-delay: 0.7s;
-}
-
-h2.tagline{
-  font-size:3em;
-  margin-top:80px;
-  font: 'Archer', "proxima-nova-light",'Helvetica', sans-serif;
-}
 
 input[type=text], input[type=password], input[type=submit]{
     min-width: 60%;
@@ -271,8 +252,8 @@ span.dspan{color:green;}
 }
 
 
-
 /*END SIGN-UP*/
+
 .header{
   background: rgba(0,0,0,.90);
   position:fixed;
@@ -596,12 +577,28 @@ span.about{
   z-index: 1; 
 }
 
-
 .is-active .lastInputOnForm {
-  margin-right: 15%;
-  min-width: 45%;
+
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
+  animation: lastInputSlide cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.4s;
+}
+
+@-webkit-keyframes lastInputSlide {
+  0% {
+    margin-right: 5%;
+    min-width: 15%;
+  }
+ 
+  60% {
+    margin-right: 10%;
+    min-width: 30%;
+  }
+ 
+  100% {
+    margin-right: 15%;
+    min-width: 45%;
+  }
 }
 
 .input-submit {
@@ -636,9 +633,45 @@ input[type=submit] {
 }
 
 .is-active .input-submit {
-  display: inline-block;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
+}
+
+.is-active input[type=submit] {
+  animation: submit-enlarge cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.4s;
+}
+
+@-webkit-keyframes submit-enlarge {
+  0% {
+    margin-left: -5%;
+  }
+ 
+  60% {
+    min-width: -10%;
+  }
+ 
+  100% {
+    min-width: -15%;
+  }
+}
+
+.is-active .input-submit {
+  display: inline-block;
+  animation: submit-move cubic-bezier(0.250, 0.460, 0.450, 0.940) 5.4s;
+}
+
+@-webkit-keyframes submit-move {
+  0% {
+    min-width: 0%;
+  }
+ 
+  60% {
+    min-width: 8%;
+  }
+ 
+  100% {
+    min-width: 15%;
+  }
 }
 
 
