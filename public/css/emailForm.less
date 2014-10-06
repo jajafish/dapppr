@@ -1,6 +1,6 @@
-*, *:after, *:before {
-	@include box-sizing(border-box);
-}
+// *, *:after, *:before {
+// 	@include box-sizing(border-box);
+// }
 
 
 input[type=email]::-ms-clear {
@@ -9,7 +9,7 @@ input[type=email]::-ms-clear {
 }
 
 
-/* -------------------------------- 
+/* --------------------------------
 
 Modules - reusable parts of our design
 
@@ -21,9 +21,9 @@ Modules - reusable parts of our design
 	margin: 0 auto;
 }
 
-/* -------------------------------- 
+/* --------------------------------
 
-Main components 
+Main components
 
 -------------------------------- */
 
@@ -47,12 +47,12 @@ Main components
   display: block;
   cursor: pointer;
   padding: .6em;
-  @include border-radius;
-  color: rgba(#444d65, .4);
+  // @include border-radius;
+  color: #444d65;
 }
 
 .cd-filter input:checked + label {
-  box-shadow: 0 0 0 1px rgba(cdb#444d65efm4 ,, .4);
+  box-shadow: 0 0 0 1px rgba(68, 77, 101, .4);
   color: #444d65;
 }
 
@@ -77,10 +77,10 @@ Main components
     left: 0;
     height: 3%;
     width: 100%;
-    background-color: lighten($color-2, 25%);
+    // background-color: lighten($color-2, 25%);
 
-    @include transform-origin(0 50%);
-    @include transform(scaleX(0));
+    // @include transform-origin(0 50%);
+    // @include transform(scaleX(0));
     visibility: hidden;
     -webkit-transition: -webkit-transform 3s;
     -moz-transition: -moz-transform 3s;
@@ -106,11 +106,11 @@ Main components
 }
 
 .cd-label {
-	color: darken($color-1, 50%);
+	// color: darken($color-1, 50%);
 	left: 18px;
 	top: 20%;
 	text-transform: uppercase;
-	@include font-size(11px);
+	// @include font-size(11px);
 	font-weight: 700;
 	opacity: 1;
     -ms-transform: translate3d(0,0,0); /* IE 9 */
@@ -288,7 +288,7 @@ input:-ms-input-placeholder{
 	left: 0;
 	height: 50%;
 	width: 100%;
-	background-color: $color-5;
+	// background-color: $color-5;
     -ms-transform-origin: 50% 100%; /* IE 9 */
     -webkit-transform-origin: 50% 100%; /* Chrome, Safari, Opera */
     transform-origin: 50% 100%;
@@ -305,7 +305,7 @@ input:-ms-input-placeholder{
   position: absolute;
   text-align: center;
   width: 100%;
-  @include center;
+  // @include center;
   color: #fff;
   opacity: 0;
   -webkit-transition: opacity .3s 0s;

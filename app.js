@@ -10,8 +10,9 @@ var express                 = require('express'),
     request                 = require('request'),
     fs                      = require('fs'),
     util                    = require('util'),
-    mime                    = require('mime');
-    path                    = require('path');
+    mime                    = require('mime'),
+    path                    = require('path'),
+    lessMiddleware           = require('less-middleware');
 
 
 
@@ -20,9 +21,8 @@ Artist = Parse.Object.extend('Artist');
 Parse.initialize("1m5YuobBTxJaGyIS5TfdJPY0hWsNiRYKxR9x6XFy", "7qklAQq7GXWNspOc4ZSaS6a1ZPNMSF8CEijqgQL2");
 
 
-
+app.use(lessMiddleware(__dirname + '/public'));
 app.use(express.static(__dirname + "/public"));
-app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(function(req, res, next){
   console.log('%s %s', req.method, req.url);
