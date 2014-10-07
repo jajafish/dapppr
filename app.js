@@ -23,6 +23,7 @@ Parse.initialize("1m5YuobBTxJaGyIS5TfdJPY0hWsNiRYKxR9x6XFy", "7qklAQq7GXWNspOc4Z
 
 app.use(lessMiddleware(__dirname + '/public'));
 app.use(express.static(__dirname + "/public"));
+app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(function(req, res, next){
   console.log('%s %s', req.method, req.url);
