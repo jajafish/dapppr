@@ -6,30 +6,9 @@ block content
       h1.sign-up-logo dapppr
         .cd-form-wrapper.cd-container
             form.cd-form(method="post", action="/")
-              input#cd-email.cd-email(type='text', name='dribbbleUserName', autocomplete="off", placeholder='Enter your dribbble username to create a t-shirt store.', onblur="this.css('background', 'white')")
-              input.cd-submit(type='submit', value='Create your t-shirt store')
-              
-              
-//              .cd-loading
-//            .cd-response.cd-response-error(data-type='message') Ops! Error message here
-//            .cd-response-success(data-type='message')
-//              p Great! Success message here
-//            .cd-response.cd-response-notification(data-type='message') Hey! Notification message here            
-            
-            
-//            
-//            input(type="text", name="dribbbleUserName", placeholder="Enter your dribbble username to create a t-shirt store.", onfocus="this.placeholder = ''", onblur="this.placeholder = 'Enter your dribbble username to create a t-shirt store.'")
+                input#cd-email.cd-email(type='text', name='dribbbleUserName', autocomplete="off", placeholder='Enter your dribbble username to create a t-shirt store.')
+                input.cd-submit(type='submit', value='Create your t-shirt store')
+                .cd-loading
 
-
-
-//  ul.cd-filter
-//      li
-//          input#cd-success(type='radio', name='cd-message', checked='checked')
-//          label(for='cd-success') Success
-//        li
-//          input#cd-error(type='radio', name='cd-message')
-//          label(for='cd-error') Error
-//        li
-//          input#cd-notification(type='radio', name='cd-message')
-//          label(for='cd-notification') Notification
-        
+            //- .cd-response-success(data-type='message')
+            //-   p Great! Success message here

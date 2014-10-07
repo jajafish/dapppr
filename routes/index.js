@@ -6,6 +6,8 @@ exports.signUpPage = function (req, res) {
 };
 
 exports.postUserName = function (req, res) {
+    console.log("from the dribbble service the body is " +req.body);
+
     var username = req.body.dribbbleUserName;
     console.log("from the dribbble service the username is " +username);
     var requestForUserInformation  = require('request');
@@ -21,9 +23,7 @@ exports.postUserName = function (req, res) {
         var usersArtWorkURLs = [];
 
         var PNGREGEX = /\.(png)\b/;
-
         for (var i = 0; i < 14; i++) {
-
             var currentImageUrl = dribbbleUserShots[i].image_url;
 
             if (PNGREGEX.exec(currentImageUrl)) {
@@ -237,7 +237,7 @@ exports.dribbblePetition = function(req, res) {
           console.log('get name ', myPointerObject.id);
           getArtistInfo(myPointerObject.id, callback);
         }
-        // gatherArtistUsers(callback); 
+        // gatherArtistUsers(callback);
       }
     });
   };
@@ -254,7 +254,7 @@ exports.dribbblePetition = function(req, res) {
         };
 
         artistUsers.push(artistObject);
-        gatherArtistUsers(callback); 
+        gatherArtistUsers(callback);
 
       }
     });

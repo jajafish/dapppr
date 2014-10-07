@@ -84,7 +84,7 @@ $(document).ready(function() {
             });
     });
 
-    if ($('#save-product') >== 1){
+    if ($('#save-product') >= 1){
       document.getElementById('save-product').onclick = function() {
                 saveProduct();
       };
