@@ -1,4 +1,4 @@
-var dribbbleAPI = require('../apiRequests/dribbbleService');
+// var dribbbleAPI = require('../apiRequests/dribbbleService');
 var queue = require('queue-async');
 
 exports.signUpPage = function (req, res) {
@@ -6,8 +6,6 @@ exports.signUpPage = function (req, res) {
 };
 
 exports.postUserName = function (req, res) {
-    console.log("from the dribbble service the body is " +req.body);
-
     var username = req.body.dribbbleUserName;
     console.log("from the dribbble service the username is " +username);
     var requestForUserInformation  = require('request');
