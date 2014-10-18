@@ -1,4 +1,4 @@
-var dribbbleAPI = require('../apiRequests/dribbbleService');
+// var dribbbleAPI = require('../apiRequests/dribbbleService');
 var queue = require('queue-async');
 
 exports.signUpPage = function (req, res) {
@@ -21,9 +21,7 @@ exports.postUserName = function (req, res) {
         var usersArtWorkURLs = [];
 
         var PNGREGEX = /\.(png)\b/;
-
         for (var i = 0; i < 14; i++) {
-
             var currentImageUrl = dribbbleUserShots[i].image_url;
 
             if (PNGREGEX.exec(currentImageUrl)) {
@@ -237,7 +235,7 @@ exports.dribbblePetition = function(req, res) {
           console.log('get name ', myPointerObject.id);
           getArtistInfo(myPointerObject.id, callback);
         }
-        // gatherArtistUsers(callback); 
+        // gatherArtistUsers(callback);
       }
     });
   };
@@ -254,7 +252,7 @@ exports.dribbblePetition = function(req, res) {
         };
 
         artistUsers.push(artistObject);
-        gatherArtistUsers(callback); 
+        gatherArtistUsers(callback);
 
       }
     });

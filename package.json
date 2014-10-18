@@ -19,13 +19,14 @@
     "url": "https://github.com/jajafish/dapppr/issues"
   },
   "homepage": "https://github.com/jajafish/dapppr",
-  "dependencies" : {
-    "express" : "4.x",
-    "jade" : "*",
-    "request" : "*",
-    "body-parser": "*",
-    "config" : "*",
+  "dependencies": {
     "base64-js-codec": "1.0.0",
-    "queue-async" : "1.0.7"
+    "body-parser": "*",
+    "config": "*",
+    "express": "4.x",
+    "jade": "*",
+    "less-middleware": "^1.0.4",
+    "queue-async": "1.0.7",
+    "request": "*"
   }
 }
